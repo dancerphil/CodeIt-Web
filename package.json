@@ -1,10 +1,10 @@
 {
-  "name": "ant-design-pro",
-  "version": "0.2.2-rc.1",
-  "description": "An out-of-box UI solution for enterprise applications",
+  "name": "CodeIt-Web",
+  "version": "0.1.0",
+  "description": "CodeIt",
   "private": true,
   "scripts": {
-    "precommit": "npm run lint-staged",
+    "precommit": "npm run lint",
     "start": "roadhog server",
     "start:no-proxy": "NO_PROXY=true roadhog server",
     "build": "roadhog build",
