@@ -2,23 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Route } from 'dva/router';
 import DocumentTitle from 'react-document-title';
-import { Icon } from 'antd';
 import GlobalFooter from '../components/GlobalFooter';
 import styles from './UserLayout.less';
 import { getRouteData } from '../utils/utils';
-
-const links = [{
-  title: '帮助',
-  href: '',
-}, {
-  title: '隐私',
-  href: '',
-}, {
-  title: '条款',
-  href: '',
-}];
-
-const copyright = <div>Copyright <Icon type="copyright" /> 2017 蚂蚁金服体验技术部出品</div>;
 
 class UserLayout extends React.PureComponent {
   static childContextTypes = {
@@ -64,7 +50,7 @@ class UserLayout extends React.PureComponent {
               )
             )
           }
-          <GlobalFooter className={styles.footer} links={links} copyright={copyright} />
+          <GlobalFooter />
         </div>
       </DocumentTitle>
     );
