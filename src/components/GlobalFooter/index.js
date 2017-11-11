@@ -1,28 +1,42 @@
 import React from 'react';
 import { Col, Row } from 'antd';
+import { Icon } from 'react-fa';
+
+const P = ({ children, style }) => {
+  const postStyle = Object.assign({ padding: '3rem', userSelect: 'none', color: 'white' }, style);
+  return (
+    <div className="p-5 text-center text-white" style={postStyle}>
+      {children}
+    </div>
+  );
+};
+
+const Big = ({ number, text }) => {
+  return <h4 style={{ color: 'white' }}><strong><big>{number}</big></strong>{text}</h4>;
+};
 
 export default () => {
   return (
     <div>
-      <div className="p-5 text-center text-white" style={{ backgroundColor: '#05585C', userSelect: 'none', color: 'white' }}>
+      <P className="p-5 text-center text-white" style={{ backgroundColor: '#05585C' }}>
         <div className="container">
           <Row gutter={24}>
             <Col span={8}>
-              <p><i className="fa fa-2x fa-users" aria-hidden="true" /></p>
-              <h4><strong><big>23864</big></strong>位用户</h4>
+              <p><Icon name="users" /></p>
+              <Big number={23864} text="位用户" />
             </Col>
             <Col span={8}>
-              <p><i className="fa fa-2x fa-comments" aria-hidden="true" /></p>
-              <h4><strong><big>36548</big></strong>次讨论</h4>
+              <p><Icon name="comments" /></p>
+              <Big number={36548} text="次讨论" />
             </Col>
             <Col span={8}>
-              <p><i className="fa fa-2x fa-code" aria-hidden="true" /></p>
-              <h4><strong><big>65371</big></strong>份代码</h4>
+              <p><Icon name="code" /></p>
+              <Big number={65371} text="份代码" />
             </Col>
           </Row>
         </div>
-      </div>
-      <div className="p-5 text-secondary" style={{ backgroundColor: '#252525', userSelect: 'none', color: 'white' }}>
+      </P>
+      <P className="p-5 text-secondary" style={{ backgroundColor: '#252525' }}>
         <div className="container">
           <Row gutter={24}>
             <Col span={8}>
@@ -33,16 +47,11 @@ export default () => {
               </small>
             </Col>
             <Col span={8}>
-              <small>纽佰瑞编程教育有限公司</small>
-              <br /><br />
-              <small>办公地址：上海市杨浦区复旦大学创新创业学院308</small>
-              <br /><br />
-              <small>电子邮箱：codeit@outlook.com</small>
-              <br /><br />
-              <small>联系电话：1234567890</small>
-              <br /><br />
-              <small>微信公众号：纽佰瑞编程</small>
-              <br /><br />
+              <p style={{ fontSize: '75%', lineHeight: '2' }} >纽佰瑞编程教育有限公司</p>
+              <p style={{ fontSize: '75%', lineHeight: '2' }} >办公地址：上海市杨浦区复旦大学创新创业学院308</p>
+              <p style={{ fontSize: '75%', lineHeight: '2' }} >电子邮箱：codeit@outlook.com</p>
+              <p style={{ fontSize: '75%', lineHeight: '2' }} >联系电话：1234567890</p>
+              <p style={{ fontSize: '75%', lineHeight: '2s' }} >微信公众号：纽佰瑞编程</p>
             </Col>
             <Col span={8}>
               <form action="#">
@@ -68,10 +77,10 @@ export default () => {
             </Col>
           </Row>
         </div>
-      </div>
-      <div className="p-5 text-secondary text-center" style={{ backgroundColor: '#1C1C1C', userSelect: 'none', color: 'white' }}>
+      </P>
+      <P className="p-5 text-secondary text-center" style={{ backgroundColor: '#1C1C1C' }}>
         <small>Newbrain Inc. 2016-2017 all right reserved. | 沪ICP备17026082号</small>
-      </div>
+      </P>
     </div>
   );
 };
