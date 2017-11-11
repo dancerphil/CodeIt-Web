@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { Carousel } from 'antd';
-import './Analysis.less';
+import './index.less';
+import Profile from './Profile';
 
 export default class Analysis extends Component {
   render() {
     return (
       <div>
-        <Carousel autoplay>
-          <div><h3>1</h3></div>
-          <div><h3>2</h3></div>
-          <div><h3>3</h3></div>
-          <div><h3>4</h3></div>
-        </Carousel>
         <div className="jumbotron jumbotron-fluid no-margin-bottom">
           <div className="container">
             <h1 className="display-5 text-center">我们认为每个人都可以学习计算机编程</h1>
@@ -56,6 +51,11 @@ export default class Analysis extends Component {
             </div>
           </div>
         </div>
+        <Carousel autoplay>
+          <div><Profile text={1} /></div>
+          <div><Profile text={2} /></div>
+          <div><Profile text={3} /></div>
+        </Carousel>
       </div>
     );
   }

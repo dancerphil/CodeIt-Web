@@ -2,7 +2,7 @@ import BasicLayout from '../layouts/BasicLayout';
 import UserLayout from '../layouts/UserLayout';
 import BlankLayout from '../layouts/BlankLayout';
 
-import Analysis from '../routes/Dashboard/Analysis';
+import Analysis from '../routes/HomePage/index';
 import Monitor from '../routes/Dashboard/Monitor';
 import Workplace from '../routes/Dashboard/Workplace';
 
