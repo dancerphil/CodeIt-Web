@@ -15,7 +15,7 @@ import GlobalFooter from '../components/GlobalFooter';
 import { getNavData } from '../common/nav';
 import { getRouteData } from '../utils/utils';
 
-const { Header, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 const { SubMenu } = Menu;
 
 const query = {
@@ -238,39 +238,17 @@ class BasicLayout extends React.PureComponent {
 
     const layout = (
       <Layout>
-        <Sider
-          trigger={null}
-          collapsible
-          collapsed={collapsed}
-          breakpoint="md"
-          onCollapse={this.onCollapse}
-          width={256}
-          className={styles.sider}
-        >
-          <div className={styles.logo}>
-            <Link to="/">
-              <img src="https://gw.alipayobjects.com/zos/rmsportal/iwWyPinUoseUxIAeElSx.svg" alt="logo" />
-              <h1>Ant Design Pro</h1>
-            </Link>
-          </div>
-          <Menu
-            theme="dark"
-            mode="inline"
-            {...menuProps}
-            onOpenChange={this.handleOpenChange}
-            selectedKeys={this.getCurrentMenuSelectedKeys()}
-            style={{ margin: '16px 0', width: '100%' }}
-          >
-            {this.getNavMenuItems(this.menus)}
-          </Menu>
-        </Sider>
         <Layout>
           <Header className={styles.header}>
-            <Icon
-              className={styles.trigger}
-              type={collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}
-            />
+            <Menu
+              mode="horizontal"
+              {...menuProps}
+              onOpenChange={this.handleOpenChange}
+              selectedKeys={this.getCurrentMenuSelectedKeys()}
+              style={{ margin: '16px 0', float: 'left' }}
+            >
+              {this.getNavMenuItems(this.menus)}
+            </Menu>
             <div className={styles.right}>
               <HeaderSearch
                 className={`${styles.action} ${styles.search}`}
