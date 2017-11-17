@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import AceEditor from 'react-ace';
 import { Tabs, Select } from 'antd';
+import { editorLayout, extraButton } from './commonStyle';
 
 const { TabPane } = Tabs;
 const { Option } = Select;
@@ -55,7 +56,7 @@ const defaultValue =
   `function onLoad(editor) {
   console.log("i've loaded");
 }`;
-export default class Left extends Component {
+export default class Editor extends Component {
   onLoad() {
     console.log('i\'ve loaded');
   }
@@ -117,13 +118,13 @@ export default class Left extends Component {
   renderTabBarExtraContent() {
     return (
       <div>
-        <Select defaultValue="javascript" style={{ width: 120 }} onChange={this.setMode}>
+        <Select defaultValue="javascript" style={extraButton} onChange={this.setMode}>
           {languages.map(lang => <Option key={lang} value={lang}>{lang}</Option>)}
         </Select>
-        <Select defaultValue="monokai" style={{ width: 120 }} onChange={this.setTheme}>
+        <Select defaultValue="monokai" style={extraButton} onChange={this.setTheme}>
           {themes.map(theme => <Option key={theme} value={theme}>{theme}</Option>)}
         </Select>
-        <Select defaultValue="14" style={{ width: 120 }} onChange={this.setFontSize}>
+        <Select defaultValue="14" style={extraButton} onChange={this.setFontSize}>
           {[14, 16, 18, 20, 24, 28, 32, 40].map(fontSize => <Option key={fontSize} value={fontSize}>{fontSize}</Option>)}
         </Select>
       </div>
@@ -140,7 +141,7 @@ export default class Left extends Component {
           tab={<div style={{ color: 'white' }} >{this.state.mode}</div>}
         >
           <AceEditor
-            style={{ height: 'calc(100vh - 109px)', width: '100%' }}
+            style={editorLayout}
             mode={this.state.mode}
             theme={this.state.theme}
             name="blah2"
