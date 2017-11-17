@@ -4,7 +4,7 @@ import BlankLayout from '../layouts/BlankLayout';
 
 import Analysis from '../routes/HomePage/index';
 import Monitor from '../routes/Dashboard/Monitor';
-import Workplace from '../routes/Dashboard/Workplace';
+import Workplace from '../routes/Playgroud/index';
 
 import Login from '../routes/User/Login';
 import Register from '../routes/User/Register';
@@ -28,6 +28,11 @@ const data = [{
   }, {
     name: '工作台',
     path: 'workplace',
+    icon: 'table',
+    component: Workplace,
+  }, {
+    name: 'playground',
+    path: 'playground',
     icon: 'table',
     component: Workplace,
   }],
