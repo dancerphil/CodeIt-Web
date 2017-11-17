@@ -4,7 +4,8 @@ import BlankLayout from '../layouts/BlankLayout';
 
 import Analysis from '../routes/HomePage/index';
 import Monitor from '../routes/Dashboard/Monitor';
-import Workplace from '../routes/Playgroud/index';
+import Workplace from '../routes/Playgroud/preview/index';
+import Playgroud from '../routes/Playgroud/view/index';
 
 import Login from '../routes/User/Login';
 import Register from '../routes/User/Register';
@@ -33,8 +34,7 @@ const data = [{
   }, {
     name: 'playground',
     path: 'playground',
-    icon: 'table',
-    component: Workplace,
+    component: Playgroud,
   }],
 }, {
   component: UserLayout,

@@ -7,7 +7,6 @@ import styles from './index.less';
 @connect()
 export default class Workplace extends PureComponent {
   handleClick = () => {
-    console.log(this.props);
     this.props.dispatch({
       type: 'router/set',
       payload: 'playground',
