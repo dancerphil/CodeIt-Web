@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Carousel } from 'antd';
 import './index.less';
-import Profile from './Profile';
+import Part from '../../components/Layout/Part';
 
 export default class Analysis extends Component {
   render() {
@@ -51,11 +50,62 @@ export default class Analysis extends Component {
             </div>
           </div>
         </div>
-        <Carousel autoplay>
-          <div><Profile text={1} /></div>
-          <div><Profile text={2} /></div>
-          <div><Profile text={3} /></div>
-        </Carousel>
+
+        <Part className="p-5" style={{ backgroundColor: '#08ABA6' }}>
+          <div className="container text-center text-white">
+            <h3><strong><big>他们</big></strong>都<strong><big>说</big></strong>过什么</h3>
+          </div>
+          <div className="container text-center mt-5">
+            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+              <ol className="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active" />
+                <li data-target="#carouselExampleIndicators" data-slide-to="1" />
+                <li data-target="#carouselExampleIndicators" data-slide-to="2" />
+              </ol>
+              <div className="carousel-inner">
+                <div className="carousel-item mb-5 active">
+                  <small className="text-white">我认为对象就像是生物学里的细胞，或者网络中的一台计算机，只能够通过消息来通信。
+                  </small>
+                  <br />
+                  <br />
+                  <img className="rounded-circle" src={require('./assets/Alan-Kay.jpg')} alt="" width="100px" height="100px" />
+                  <br />
+                  <p className="text-white font-weight-bold lead">Alan Kay</p>
+                  <small className="text-light">面向对象之父</small>
+                  <br />
+                </div>
+                <div className="carousel-item mb-5">
+                  <small className="text-white">控制复杂性是计算机编程的本质。</small>
+                  <br />
+                  <br />
+                  <img className="rounded-circle" src={require('./assets/Brian-Kernighan.jpg')} alt="" width="100px" height="100px" />
+                  <br />
+                  <p className="text-white font-weight-bold lead">Brian Kernighan</p>
+                  <small className="text-light">Unix的主要贡献者</small>
+                  <br />
+                </div>
+                <div className="carousel-item mb-5">
+                  <small className="text-white">计算机科学领域的所有问题都可以通过其他方式间接解决。</small>
+                  <br />
+                  <br />
+                  <img className="rounded-circle" src={require('./assets/David-Wheeler.jpg')} alt="" width="100px" height="100px" />
+                  <br />
+                  <p className="text-white font-weight-bold lead">David Wheeler</p>
+                  <small className="text-light">计算机科学的先驱</small>
+                  <br />
+                </div>
+              </div>
+              <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true" />
+                <span className="sr-only">Previous</span>
+              </a>
+              <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true" />
+                <span className="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </Part>
       </div>
     );
   }
