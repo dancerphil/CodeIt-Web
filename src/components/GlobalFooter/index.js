@@ -1,15 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Form, Input, Button, Col, Row } from 'antd';
 import { Icon } from 'react-fa';
-
-const P = ({ children, style }) => {
-  const postStyle = Object.assign({ padding: '3rem', userSelect: 'none', color: 'white' }, style);
-  return (
-    <div className="p-5 text-center text-white" style={postStyle}>
-      {children}
-    </div>
-  );
-};
+import Part from '../../components/Layout/Part';
 
 const Big = ({ number, text }) => {
   return <h4 style={{ color: 'white' }}><strong><big>{number}</big></strong>{text}</h4>;
@@ -19,7 +11,7 @@ export default class BasicForms extends PureComponent {
   render() {
     return (
       <div>
-        <P className="p-5 text-center text-white" style={{ backgroundColor: '#05585C' }}>
+        <Part className="p-5 text-center text-white" style={{ backgroundColor: '#05585C' }}>
           <div className="container">
             <Row gutter={24}>
               <Col span={8}>
@@ -36,8 +28,8 @@ export default class BasicForms extends PureComponent {
               </Col>
             </Row>
           </div>
-        </P>
-        <P className="p-5 text-secondary" style={{ backgroundColor: '#252525' }}>
+        </Part>
+        <Part className="p-5 text-secondary" style={{ backgroundColor: '#252525' }}>
           <div className="container">
             <Row gutter={24}>
               <Col span={8}>
@@ -83,10 +75,10 @@ export default class BasicForms extends PureComponent {
               </Col>
             </Row>
           </div>
-        </P>
-        <P className="p-5 text-secondary text-center" style={{ backgroundColor: '#1C1C1C' }}>
+        </Part>
+        <Part className="p-5 text-secondary text-center" style={{ backgroundColor: '#1C1C1C' }}>
           <small>Newbrain Inc. 2016-2017 all right reserved. | 沪ICP备17026082号</small>
-        </P>
+        </Part>
       </div>
     );
   }
