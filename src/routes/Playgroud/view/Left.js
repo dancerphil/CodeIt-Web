@@ -1,6 +1,11 @@
+// todo
 /* eslint-disable */
 import React, { Component } from 'react';
 import AceEditor from 'react-ace';
+import { Tabs, Select } from 'antd';
+
+const { TabPane } = Tabs;
+const { Option } = Select;
 
 const languages = [
   'javascript',
@@ -75,14 +80,14 @@ export default class Left extends Component {
     console.log('onValidate', annotations);
   }
 
-  setTheme(e) {
+  setTheme(value) {
     this.setState({
-      theme: e.target.value,
+      theme: value,
     });
   }
-  setMode(e) {
+  setMode(value) {
     this.setState({
-      mode: e.target.value,
+      mode: value,
     });
   }
   setBoolean(name, value) {
@@ -90,9 +95,9 @@ export default class Left extends Component {
       [name]: value,
     });
   }
-  setFontSize(e) {
+  setFontSize(value) {
     this.setState({
-      fontSize: parseInt(e.target.value, 10),
+      fontSize: parseInt(value, 10),
     });
   }
   constructor(props) {
@@ -101,14 +106,7 @@ export default class Left extends Component {
       value: defaultValue,
       theme: 'monokai',
       mode: 'javascript',
-      enableBasicAutocompletion: false,
-      enableLiveAutocompletion: false,
       fontSize: 14,
-      showGutter: true,
-      showPrintMargin: true,
-      highlightActiveLine: true,
-      enableSnippets: false,
-      showLineNumbers: true,
     };
     this.setTheme = this.setTheme.bind(this);
     this.setMode = this.setMode.bind(this);
@@ -116,110 +114,33 @@ export default class Left extends Component {
     this.setFontSize = this.setFontSize.bind(this);
     this.setBoolean = this.setBoolean.bind(this);
   }
+  renderTabBarExtraContent() {
+    return (
+      <div>
+        <Select defaultValue="javascript" style={{ width: 120 }} onChange={this.setMode}>
+          {languages.map(lang => <Option key={lang} value={lang}>{lang}</Option>)}
+        </Select>
+        <Select defaultValue="monokai" style={{ width: 120 }} onChange={this.setTheme}>
+          {themes.map(theme => <Option key={theme} value={theme}>{theme}</Option>)}
+        </Select>
+        <Select defaultValue="14" style={{ width: 120 }} onChange={this.setFontSize}>
+          {[14, 16, 18, 20, 24, 28, 32, 40].map(fontSize => <Option key={fontSize} value={fontSize}>{fontSize}</Option>)}
+        </Select>
+      </div>
+    );
+  }
   render() {
     return (
-      <div className="columns">
-        <div className="column">
-          <div className="field">
-            <label>
-              Mode:
-            </label>
-            <p className="control">
-              <span className="select">
-                <select name="mode" onChange={this.setMode} value={this.state.mode}>
-                  {languages.map(lang => <option key={lang} value={lang}>{lang}</option>)}
-                </select>
-              </span>
-            </p>
-          </div>
-
-          <div className="field">
-            <label>
-              Theme:
-            </label>
-            <p className="control">
-              <span className="select">
-                <select name="Theme" onChange={this.setTheme} value={this.state.theme}>
-                  {themes.map(lang => <option key={lang} value={lang}>{lang}</option>)}
-                </select>
-              </span>
-            </p>
-          </div>
-
-          <div className="field">
-            <label>
-              Font Size:
-            </label>
-            <p className="control">
-              <span className="select">
-                <select name="Font Size" onChange={this.setFontSize} value={this.state.fontSize}>
-                  {[14, 16, 18, 20, 24, 28, 32, 40].map(lang => <option key={lang} value={lang}>{lang}</option>)}
-                </select>
-              </span>
-            </p>
-          </div>
-          <div className="field">
-            <p className="control">
-              <label className="checkbox">
-                <input type="checkbox" checked={this.state.enableBasicAutocompletion} onChange={e => this.setBoolean('enableBasicAutocompletion', e.target.checked)} />
-                Enable Basic Autocomplete
-              </label>
-            </p>
-          </div>
-          <div className="field">
-            <p className="control">
-              <label className="checkbox">
-                <input type="checkbox" checked={this.state.enableLiveAutocompletion} onChange={e => this.setBoolean('enableLiveAutocompletion', e.target.checked)} />
-                Enable Live Autocomplete
-              </label>
-            </p>
-          </div>
-          <div className="field">
-            <p className="control">
-              <label className="checkbox">
-                <input type="checkbox" checked={this.state.showGutter} onChange={e => this.setBoolean('showGutter', e.target.checked)} />
-                Show Gutter
-              </label>
-            </p>
-          </div>
-          <div className="field">
-            <p className="control">
-              <label className="checkbox">
-                <input type="checkbox" checked={this.state.showPrintMargin} onChange={e => this.setBoolean('showPrintMargin', e.target.checked)} />
-                Show Print Margin
-              </label>
-            </p>
-          </div>
-          <div className="field">
-            <p className="control">
-              <label className="checkbox">
-                <input type="checkbox" checked={this.state.highlightActiveLine} onChange={e => this.setBoolean('highlightActiveLine', e.target.checked)} />
-                Highlight Active Line
-              </label>
-            </p>
-          </div>
-          <div className="field">
-            <p className="control">
-              <label className="checkbox">
-                <input type="checkbox" checked={this.state.enableSnippets} onChange={e => this.setBoolean('enableSnippets', e.target.checked)} />
-                Enable Snippets
-              </label>
-            </p>
-          </div>
-          <div className="field">
-            <p className="control">
-              <label className="checkbox">
-                <input type="checkbox" checked={this.state.showLineNumbers} onChange={e => this.setBoolean('showLineNumbers', e.target.checked)} />
-                Show Line Numbers
-              </label>
-            </p>
-          </div>
-
-
-        </div>
-        <div className="examples column">
-          <h2>Editor</h2>
+      <Tabs
+        style={{ background: '#2f3129' }}
+        tabBarStyle={{ marginBottom: '0px', borderBottom: '1px solid #2f3129' }}
+        tabBarExtraContent={this.renderTabBarExtraContent()}
+      >
+        <TabPane
+          tab={<div style={{ color: 'white' }} >{this.state.mode}</div>}
+        >
           <AceEditor
+            style={{ height: 'calc(100vh - 109px)', width: '100%' }}
             mode={this.state.mode}
             theme={this.state.theme}
             name="blah2"
@@ -230,19 +151,19 @@ export default class Left extends Component {
             onValidate={this.onValidate}
             value={this.state.value}
             fontSize={this.state.fontSize}
-            showPrintMargin={this.state.showPrintMargin}
-            showGutter={this.state.showGutter}
-            highlightActiveLine={this.state.highlightActiveLine}
+            showPrintMargin
+            showGutter
+            highlightActiveLine
             setOptions={{
-              enableBasicAutocompletion: this.state.enableBasicAutocompletion,
-              enableLiveAutocompletion: this.state.enableLiveAutocompletion,
-              enableSnippets: this.state.enableSnippets,
-              showLineNumbers: this.state.showLineNumbers,
-              tabSize: 2,
-            }}
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: true,
+                showLineNumbers: true,
+                tabSize: 2,
+              }}
           />
-        </div>
-      </div>
+        </TabPane>
+      </Tabs>
     );
   }
 }
