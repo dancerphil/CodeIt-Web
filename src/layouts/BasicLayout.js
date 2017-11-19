@@ -314,7 +314,7 @@ class BasicLayout extends React.PureComponent {
                   )
                 )
               }
-            <Redirect to="/dashboard/analysis" />
+            <Redirect to="/analysis" />
           </Switch>
         </Content>
         <GlobalFooter />

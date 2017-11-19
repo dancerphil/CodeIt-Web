@@ -10,6 +10,7 @@
     "jasmine": true
   },
   "rules": {
+    "linebreak-style": [0], // windows
     "max-len": [0], // 每行代码长度没有限制
 
     "generator-star-spacing": [0],
