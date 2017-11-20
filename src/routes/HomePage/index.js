@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'dva';
 import './index.less';
 import Part from '../../components/Layout/Part';
 
+@connect()
 export default class Analysis extends Component {
+  handleClick = href => () => {
+    this.props.dispatch({
+      type: 'router/set',
+      payload: href,
+    });
+  }
   render() {
     return (
       <div>
@@ -14,8 +22,8 @@ export default class Analysis extends Component {
         </div>
         <div className="card-group">
           <div className="card">
-            <a href="class.html">
-              <img className="card-img-top" src="image/classes.jpg" alt="Card cap" />
+            <a onClick={this.handleClick('courses')}>
+              <img className="card-img-top" src={require('./assets/courses.svg')} alt="Card cap" />
             </a>
             <div className="card-body">
               <h4 className="card-title text-center">教程</h4>
@@ -24,7 +32,7 @@ export default class Analysis extends Component {
           </div>
           <div className="card">
             <a href="#">
-              <img className="card-img-top" src="image/problems.jpg" alt="Card cap" />
+              <img className="card-img-top" src={require('./assets/guidance.svg')} alt="Card cap" />
             </a>
             <div className="card-body">
               <h4 className="card-title text-center">练习</h4>
@@ -33,7 +41,7 @@ export default class Analysis extends Component {
           </div>
           <div className="card">
             <a href="discuss.html">
-              <img className="card-img-top" src="image/discuss.jpg" alt="Card cap" />
+              <img className="card-img-top" src={require('./assets/communication.svg')} alt="Card cap" />
             </a>
             <div className="card-body">
               <h4 className="card-title text-center">讨论</h4>
@@ -42,7 +50,7 @@ export default class Analysis extends Component {
           </div>
           <div className="card">
             <a href="studio.html">
-              <img className="card-img-top" src="image/studio.jpg" alt="Card cap" />
+              <img className="card-img-top" src={require('./assets/studio-icon.svg')} alt="Card cap" />
             </a>
             <div className="card-body">
               <h4 className="card-title text-center">工作室</h4>
@@ -53,7 +61,7 @@ export default class Analysis extends Component {
 
         <Part className="p-5" style={{ backgroundColor: '#08ABA6' }}>
           <div className="container text-center text-white">
-            <h3><strong><big>他们</big></strong>都<strong><big>说</big></strong>过什么</h3>
+            <h3><strong>他们</strong>都<strong>说</strong>过什么</h3>
           </div>
           <div className="container text-center mt-5">
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
