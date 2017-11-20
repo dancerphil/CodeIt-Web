@@ -1,8 +1,8 @@
 import dva from 'dva';
 import 'moment/locale/zh-cn';
-import models from './models';
 import course from './module/Course/dva';
 import login from './module/Login/dva';
+import models from './models/old/index';
 import './polyfill';
 import './g2';
 // import { browserHistory } from 'dva/router';
