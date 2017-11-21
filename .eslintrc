@@ -12,6 +12,7 @@
   "rules": {
     "linebreak-style": [0], // windows
     "max-len": [0], // 每行代码长度没有限制
+    "no-underscore-dangle": [0], // 需要使用 _id
 
     "generator-star-spacing": [0],
     "consistent-return": [0],
