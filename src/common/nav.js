@@ -7,7 +7,7 @@ import Monitor from '../module/Course/view/index';
 import Workplace from '../module/Playgroud/preview/index';
 import Playgroud from '../module/Playgroud/view/index';
 
-import Login from '../routes/User/Login';
+import Login from '../module/Login/view/index';
 import Register from '../routes/User/Register';
 import RegisterResult from '../routes/User/RegisterResult';
 

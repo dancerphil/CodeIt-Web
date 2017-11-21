@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import { routerRedux, Link } from 'dva/router';
 import { Form, Input, Tabs, Button, Icon, Checkbox, Row, Col, Alert } from 'antd';
-import styles from './Login.less';
+import styles from './index.less';
 
 const FormItem = Form.Item;
 const { TabPane } = Tabs;
@@ -47,13 +47,13 @@ export default class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { type } = this.state;
     this.props.form.validateFields({ force: true },
       (err, values) => {
         if (!err) {
+          const { userName, password } = values;
           this.props.dispatch({
-            type: `login/${type}Submit`,
-            payload: values,
+            type: 'userx/login',
+            payload: { username: userName, password },
           });
         }
       }

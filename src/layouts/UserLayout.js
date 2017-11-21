@@ -29,16 +29,17 @@ class UserLayout extends React.PureComponent {
     return (
       <DocumentTitle title={this.getPageTitle()}>
         <div className={styles.container}>
-          <div className={styles.top}>
-            <div className={styles.header}>
-              <Link to="/">
-                <img alt="" className={styles.logo} src="https://gw.alipayobjects.com/zos/rmsportal/NGCCBOENpgTXpBWUIPnI.svg" />
-                <span className={styles.title}>Ant Design</span>
-              </Link>
+          <div style={{ height: '100vh' }}>
+            <div className={styles.top}>
+              <div className={styles.header}>
+                <Link to="/">
+                  <img alt="" className={styles.logo} src="https://gw.alipayobjects.com/zos/rmsportal/NGCCBOENpgTXpBWUIPnI.svg" />
+                  <span className={styles.title}>Ant Design</span>
+                </Link>
+              </div>
+              <p className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</p>
             </div>
-            <p className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</p>
-          </div>
-          {
+            {
             getRouteData('UserLayout').map(item =>
               (
                 <Route
@@ -50,6 +51,7 @@ class UserLayout extends React.PureComponent {
               )
             )
           }
+          </div>
           <GlobalFooter />
         </div>
       </DocumentTitle>
