@@ -7,7 +7,7 @@ import CourseCard from './CourseCard';
 export default class Course extends PureComponent {
   componentDidMount() {
     this.props.dispatch({
-      type: 'monitor/fetchTags',
+      type: 'course/get',
     });
   }
 
@@ -110,7 +110,6 @@ export default class Course extends PureComponent {
         grid={{ gutter: 24, lg: 2, md: 2, sm: 1, xs: 1 }}
         dataSource={data}
         renderItem={(item) => {
-          console.log(item);
           return (item ? <List.Item key={item._id.$id}><CourseCard item={item} /></List.Item> : <div>暂时没有课程</div>);
         }}
       />

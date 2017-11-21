@@ -1,6 +1,10 @@
 import { stringify } from 'qs';
 import request from '../utils/request';
 
+export async function course() {
+  return request('/api/class/find', { method: 'POST' });
+}
+
 export async function queryProjectNotice() {
   return request('/api/project/notice');
 }

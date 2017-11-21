@@ -1,24 +1,24 @@
-import { queryTags } from '../../../services/api';
+import { course } from '../../../services/api';
 
 export default {
-  namespace: 'monitor',
+  namespace: 'course',
 
   state: {
     tags: [],
   },
 
   effects: {
-    *fetchTags(_, { call, put }) {
-      const response = yield call(queryTags);
+    *get(_, { call, put }) {
+      const response = yield call(course);
       yield put({
-        type: 'saveTags',
+        type: 'getSuccess',
         payload: response.list,
       });
     },
   },
 
   reducers: {
-    saveTags(state, action) {
+    getSuccess(state, action) {
       return {
         ...state,
         tags: action.payload,
