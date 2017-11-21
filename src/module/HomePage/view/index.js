@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
 import './index.less';
-import Part from '../../components/Layout/Part';
+import Part from '../../../components/Layout/Part';
 
 @connect()
 export default class Analysis extends Component {
@@ -23,7 +23,7 @@ export default class Analysis extends Component {
         <div className="card-group">
           <div className="card">
             <a onClick={this.handleClick('courses')}>
-              <img className="card-img-top" src={require('./assets/courses.svg')} alt="Card cap" />
+              <img className="card-img-top" src={require('../assets/courses.svg')} alt="Card cap" />
             </a>
             <div className="card-body">
               <h4 className="card-title text-center">教程</h4>
@@ -32,7 +32,7 @@ export default class Analysis extends Component {
           </div>
           <div className="card">
             <a href="#">
-              <img className="card-img-top" src={require('./assets/guidance.svg')} alt="Card cap" />
+              <img className="card-img-top" src={require('../assets/guidance.svg')} alt="Card cap" />
             </a>
             <div className="card-body">
               <h4 className="card-title text-center">练习</h4>
@@ -41,7 +41,7 @@ export default class Analysis extends Component {
           </div>
           <div className="card">
             <a href="discuss.html">
-              <img className="card-img-top" src={require('./assets/communication.svg')} alt="Card cap" />
+              <img className="card-img-top" src={require('../assets/communication.svg')} alt="Card cap" />
             </a>
             <div className="card-body">
               <h4 className="card-title text-center">讨论</h4>
@@ -50,7 +50,7 @@ export default class Analysis extends Component {
           </div>
           <div className="card">
             <a href="studio.html">
-              <img className="card-img-top" src={require('./assets/studio-icon.svg')} alt="Card cap" />
+              <img className="card-img-top" src={require('../assets/studio-icon.svg')} alt="Card cap" />
             </a>
             <div className="card-body">
               <h4 className="card-title text-center">工作室</h4>
@@ -76,7 +76,7 @@ export default class Analysis extends Component {
                   </small>
                   <br />
                   <br />
-                  <img className="rounded-circle" src={require('./assets/Alan-Kay.jpg')} alt="" width="100px" height="100px" />
+                  <img className="rounded-circle" src={require('../assets/Alan-Kay.jpg')} alt="" width="100px" height="100px" />
                   <br />
                   <p className="text-white font-weight-bold lead">Alan Kay</p>
                   <small className="text-light">面向对象之父</small>
@@ -86,7 +86,7 @@ export default class Analysis extends Component {
                   <small className="text-white">控制复杂性是计算机编程的本质。</small>
                   <br />
                   <br />
-                  <img className="rounded-circle" src={require('./assets/Brian-Kernighan.jpg')} alt="" width="100px" height="100px" />
+                  <img className="rounded-circle" src={require('../assets/Brian-Kernighan.jpg')} alt="" width="100px" height="100px" />
                   <br />
                   <p className="text-white font-weight-bold lead">Brian Kernighan</p>
                   <small className="text-light">Unix的主要贡献者</small>
@@ -96,7 +96,7 @@ export default class Analysis extends Component {
                   <small className="text-white">计算机科学领域的所有问题都可以通过其他方式间接解决。</small>
                   <br />
                   <br />
-                  <img className="rounded-circle" src={require('./assets/David-Wheeler.jpg')} alt="" width="100px" height="100px" />
+                  <img className="rounded-circle" src={require('../assets/David-Wheeler.jpg')} alt="" width="100px" height="100px" />
                   <br />
                   <p className="text-white font-weight-bold lead">David Wheeler</p>
                   <small className="text-light">计算机科学的先驱</small>

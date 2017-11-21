@@ -1,6 +1,8 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
 
+const apiPrefix = 'http://106.14.120.241/';
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
@@ -35,7 +37,7 @@ export default function request(url, options) {
     newOptions.body = JSON.stringify(newOptions.body);
   }
 
-  return fetch(url, newOptions)
+  return fetch(apiPrefix + url, newOptions)
     .then(checkStatus)
     .then(response => response.json())
     .catch((error) => {
