@@ -2,10 +2,10 @@ import BasicLayout from '../layouts/BasicLayout';
 import UserLayout from '../layouts/UserLayout';
 import BlankLayout from '../layouts/BlankLayout';
 
-import Analysis from '../routes/HomePage/index';
-import Monitor from '../routes/Class/index';
-import Workplace from '../routes/Playgroud/preview/index';
-import Playgroud from '../routes/Playgroud/view/index';
+import Analysis from '../module/HomePage/view/index';
+import Monitor from '../module/Class/view/index';
+import Workplace from '../module/Playgroud/preview/index';
+import Playgroud from '../module/Playgroud/view/index';
 
 import Login from '../routes/User/Login';
 import Register from '../routes/User/Register';
