@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { List } from 'antd';
-import ClassCard from './ClassCard';
+import CourseCard from './CourseCard';
 
 @connect()
-export default class Class extends PureComponent {
+export default class Course extends PureComponent {
   componentDidMount() {
     this.props.dispatch({
       type: 'monitor/fetchTags',
@@ -111,7 +111,7 @@ export default class Class extends PureComponent {
         dataSource={data}
         renderItem={(item) => {
           console.log(item);
-          return (item ? <List.Item key={item._id.$id}><ClassCard item={item} /></List.Item> : <div>暂时没有课程</div>);
+          return (item ? <List.Item key={item._id.$id}><CourseCard item={item} /></List.Item> : <div>暂时没有课程</div>);
         }}
       />
     );

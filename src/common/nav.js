@@ -3,7 +3,7 @@ import UserLayout from '../layouts/UserLayout';
 import BlankLayout from '../layouts/BlankLayout';
 
 import Analysis from '../module/HomePage/view/index';
-import Monitor from '../module/Class/view/index';
+import Monitor from '../module/Course/view/index';
 import Workplace from '../module/Playgroud/preview/index';
 import Playgroud from '../module/Playgroud/view/index';
 
