@@ -24,7 +24,7 @@ export default class Output extends PureComponent {
           tab={<div style={{ color: 'white' }} >Output</div>}
         >
           <div style={editorLayout}>
-            {'xxx'}
+            {'功能正在开发中'}
           </div>
         </TabPane>
       </Tabs>

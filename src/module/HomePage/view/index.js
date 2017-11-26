@@ -14,6 +14,45 @@ export default class Analysis extends Component {
   render() {
     return (
       <div>
+        <img src={require('../assets/home-page-cover.jpg')} alt="" width="100%" />
+        <div className="jumbotron jumbotron-fluid m-0">
+          <div className="container">
+            <h4 className="text-center">每个人都可以学习计算机编程</h4>
+          </div>
+          <br />
+          <br />
+          <div className="container text-center">
+            <div className="row">
+              <div className="col">
+                <div className="container">
+                  <img className="m-4" src="resources/icons/courses.svg" alt="" width="64px" height="64px" />
+                  <h5>丰富的在线资源</h5>
+                  <small>我们提供了丰富的在线资源，保证用户能够找到最适合自己的教程。每门课程都合理地划分了不同的章节，循序渐进。
+                            同时还配有相应的测试题，以供巩固知识。相信你一定能够享受学习的乐趣，并且得到提升。
+                  </small>
+                </div>
+              </div>
+              <div className="col">
+                <div className="container">
+                  <img className="m-4" src="resources/icons/communication.svg" alt="" width="64px" height="64px" />
+                  <h5>方便的交流平台</h5>
+                  <small>
+                            如果你在学习的过程中遇到任何问题，不用烦恼，你随时可以将它发表到讨论区，让其他人来解决你的疑惑。当然，如果你写出了漂亮的代码，你也可以将它与众人分享。毕竟，授人玫瑰，手有余香。
+                  </small>
+                </div>
+              </div>
+              <div className="col">
+                <div className="container">
+                  <img className="m-4" src="resources/icons/guidance.svg" alt="" width="64px" height="64px" />
+                  <h5>细心的真人指导</h5>
+                  <small>
+                            尽管强大的自学能力是一个优秀的程序员必备的素质，但是我们仍然真诚地希望给你最大程度地帮助。尤其对于新手来说，我们有贴心的在线一对一真人指导服务，任何时候，你都可以预约到你想要的老师，为你排忧解难。
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="jumbotron jumbotron-fluid no-margin-bottom">
           <div className="container">
             <h1 className="display-5 text-center">我们认为每个人都可以学习计算机编程</h1>
