@@ -4,7 +4,6 @@ export default {
   namespace: 'course',
 
   state: {
-    tags: [],
   },
 
   effects: {
@@ -12,17 +11,14 @@ export default {
       const response = yield call(course);
       yield put({
         type: 'getSuccess',
-        payload: response.list,
+        payload: response,
       });
     },
   },
 
   reducers: {
     getSuccess(state, action) {
-      return {
-        ...state,
-        tags: action.payload,
-      };
+      return Object.assign({}, state, action.payload);
     },
   },
 };
