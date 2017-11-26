@@ -9,7 +9,7 @@ export default class Workplace extends PureComponent {
   handleClick = () => {
     this.props.dispatch({
       type: 'router/set',
-      payload: 'playground',
+      payload: 'workplace/playground',
     });
   }
   render() {

@@ -5,6 +5,7 @@ import Action from './Action';
 export default class ClassCard extends PureComponent {
   render() {
     const { item } = this.props;
+    console.log(item);
     const actions = [
       <Action name="人数" value={item.learners} />,
       <Action name="课程" value={item.lessons} />,

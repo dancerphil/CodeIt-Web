@@ -16,7 +16,6 @@ import { getNavData } from '../common/nav';
 import { getRouteData } from '../utils/utils';
 
 const { Header, Content } = Layout;
-const { SubMenu } = Menu;
 
 const query = {
   'screen-xs': {
@@ -104,7 +103,7 @@ class BasicLayout extends React.PureComponent {
       return [];
     }
     return menusData.map((item) => {
-      if (!item.name) {
+      if (!item.name || !item.show) {
         return null;
       }
       let itemPath;
@@ -112,23 +111,6 @@ class BasicLayout extends React.PureComponent {
         itemPath = item.path;
       } else {
         itemPath = `${parentPath}/${item.path || ''}`.replace(/\/+/g, '/');
-      }
-      if (item.children && item.children.some(child => child.name)) {
-        return (
-          <SubMenu
-            title={
-              item.icon ? (
-                <span>
-                  <Icon type={item.icon} />
-                  <span>{item.name}</span>
-                </span>
-              ) : item.name
-            }
-            key={item.key || item.path}
-          >
-            {this.getNavMenuItems(item.children, itemPath)}
-          </SubMenu>
-        );
       }
       const icon = item.icon && <Icon type={item.icon} />;
       return (

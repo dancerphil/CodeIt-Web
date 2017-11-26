@@ -15,7 +15,6 @@ export default class Course extends PureComponent {
 
   render() {
     const { $array } = this.props.course;
-
     return (
       <List
         rowKey="id"

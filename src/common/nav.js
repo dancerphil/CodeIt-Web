@@ -21,19 +21,22 @@ const data = [{
     path: 'analysis',
     icon: 'dashboard',
     component: Analysis,
+    show: true,
   }, {
     name: '监控页',
     path: 'monitor',
     icon: 'form',
     component: Monitor,
+    show: true,
   }, {
     name: '工作台',
     path: 'workplace',
     icon: 'table',
     component: Workplace,
+    show: true,
   }, {
     name: 'playground',
-    path: 'playground',
+    path: 'workplace/playground',
     component: Playgroud,
   }],
 }, {
