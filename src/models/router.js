@@ -9,7 +9,6 @@ export default {
 
   effects: {
     *set({ payload }, { put }) {
-      console.log(payload, routerRedux);
       yield put(routerRedux.push(`/${payload}`));
     },
   },

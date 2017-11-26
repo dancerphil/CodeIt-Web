@@ -10,7 +10,6 @@ export default {
   effects: {
     *login({ payload }, { call, put }) {
       const response = yield call(login, payload);
-      console.log(response.uid, response.error_code);
       yield put({
         type: 'router/set',
         payload: 'analysis',
