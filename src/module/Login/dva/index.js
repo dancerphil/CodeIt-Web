@@ -9,15 +9,19 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(login, payload);
-      yield put({
-        type: 'router/set',
-        payload: 'analysis',
-      });
-      yield put({
-        type: 'loginSuccess',
-        payload: response.list,
-      });
+      try {
+        const response = yield call(login, payload);
+        yield put({
+          type: 'router/set',
+          payload: 'analysis',
+        });
+        yield put({
+          type: 'loginSuccess',
+          payload: response.list,
+        });
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 

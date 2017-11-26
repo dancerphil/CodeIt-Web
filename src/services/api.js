@@ -1,12 +1,17 @@
 import { stringify } from 'qs';
 import request from '../utils/request';
 
-const r = (url, body) => {
+async function r(url, body) {
   if (body) {
-    return request(url, { method: 'POST', body });
+    const req = await request(url, { method: 'POST', body });
+    const { error_code } = req;
+    if (error_code === 0) {
+      return req;
+    }
+    throw new Error(`error_code: ${error_code}`);
   }
   return request(url, { method: 'POST' });
-};
+}
 
 export async function login(params) {
   return r('/api/user/login', params);
