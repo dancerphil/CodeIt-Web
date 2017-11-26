@@ -77,7 +77,9 @@ export default class BasicForms extends PureComponent {
           </div>
         </Part>
         <Part className="p-5 text-secondary text-center" style={{ backgroundColor: '#1C1C1C' }}>
-          <small>Newbrain Inc. 2016-2017 all right reserved. | 沪ICP备17026082号</small>
+          <small>
+            Newbrain Inc. 2016-2017 all right reserved. | <a href="http://www.miitbeian.gov.cn">沪ICP备17026082号</a>
+          </small>
         </Part>
       </div>
     );
