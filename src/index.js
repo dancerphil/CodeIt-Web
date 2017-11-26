@@ -2,7 +2,7 @@ import dva from 'dva';
 import 'moment/locale/zh-cn';
 import course from './module/Course/dva';
 import login from './module/Login/dva';
-import models from './models/old/index';
+import models from './models/index';
 import './polyfill';
 import './g2';
 // import { browserHistory } from 'dva/router';
