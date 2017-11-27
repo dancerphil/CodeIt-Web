@@ -16,8 +16,13 @@ async function r(url, body) {
 export async function login(params) {
   return r('/api/user/login', params);
 }
+
 export async function course() {
   return r('/api/class/find');
+}
+
+export async function lesson(id) {
+  return r('/api/class/lesson/find', { cid: id });
 }
 
 export async function queryProjectNotice() {

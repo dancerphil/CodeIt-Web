@@ -285,17 +285,15 @@ class BasicLayout extends React.PureComponent {
         <Content style={{ margin: '0', height: '100%' }}>
           <Switch>
             {
-                getRouteData('BasicLayout').map(item =>
-                  (
-                    <Route
-                      exact={item.exact}
-                      key={item.path}
-                      path={item.path}
-                      component={item.component}
-                    />
-                  )
-                )
-              }
+              getRouteData('BasicLayout').map(item => (
+                <Route
+                  exact={item.exact}
+                  key={item.path}
+                  path={item.path}
+                  component={item.component}
+                />
+              ))
+            }
             <Redirect to="/analysis" />
           </Switch>
         </Content>

@@ -4,8 +4,9 @@ import BlankLayout from '../layouts/BlankLayout';
 
 import Analysis from '../module/HomePage/view/index';
 import Monitor from '../module/Course/view/index';
-import Workplace from '../module/Playgroud/preview/index';
-import Playgroud from '../module/Playgroud/view/index';
+import Lesson from '../module/Course/lesson/index';
+import Workplace from '../module/Playground/preview/index';
+import Playground from '../module/Playground/view/index';
 
 import Login from '../module/Login/view/index';
 import Register from '../routes/User/Register';
@@ -29,6 +30,10 @@ const data = [{
     component: Monitor,
     show: true,
   }, {
+    name: 'lesson',
+    path: 'course/:name',
+    component: Lesson,
+  }, {
     name: '工作台',
     path: 'workplace',
     icon: 'table',
@@ -37,7 +42,7 @@ const data = [{
   }, {
     name: 'playground',
     path: 'workplace/playground',
-    component: Playgroud,
+    component: Playground,
   }],
 }, {
   component: UserLayout,
