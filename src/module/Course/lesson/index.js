@@ -21,28 +21,30 @@ export default class Course extends PureComponent {
     const lesson = this.props.course.lesson || {};
     const $array = lesson.$array || [];
     return (
-      <Card
-        bordered={false}
-        title="标准列表"
-        style={{ marginTop: 24 }}
-        bodyStyle={{ padding: '0 32px 40px 32px' }}
-      >
-        <List
-          size="large"
-          rowKey="id"
-          dataSource={$array}
-          renderItem={item => (
-            <List.Item
-              actions={[<a>{item.quizzes}</a>]}
-            >
-              <List.Item.Meta
-                title={`${item.order} | ${item.title}`}
-              />
-              <div />
-            </List.Item>
+      <div style={{ margin: '20px' }}>
+        <Card
+          bordered={false}
+          title="标准列表"
+          style={{ marginTop: 24 }}
+          bodyStyle={{ padding: '0 32px 40px 32px' }}
+        >
+          <List
+            size="large"
+            rowKey="id"
+            dataSource={$array}
+            renderItem={item => (
+              <List.Item
+                actions={[<a>{item.quizzes}</a>]}
+              >
+                <List.Item.Meta
+                  title={`${item.order} | ${item.title}`}
+                />
+                <div />
+              </List.Item>
           )}
-        />
-      </Card>
+          />
+        </Card>
+      </div>
     );
   }
 }
