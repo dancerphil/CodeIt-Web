@@ -52,18 +52,6 @@ class BasicLayout extends React.PureComponent {
       payload: collapsed,
     });
   }
-  toggle = () => {
-    const { collapsed } = this.props;
-    this.props.dispatch({
-      type: 'global/changeLayoutCollapsed',
-      payload: !collapsed,
-    });
-    this.resizeTimeout = setTimeout(() => {
-      const event = document.createEvent('HTMLEvents');
-      event.initEvent('resize', true, false);
-      window.dispatchEvent(event);
-    }, 600);
-  }
   onMenuClick = ({ key }) => {
     if (key === 'logout') {
       this.props.dispatch({

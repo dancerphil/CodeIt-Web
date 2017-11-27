@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { routerRedux, Link } from 'dva/router';
+import { Link } from 'dva/router';
 import { Form, Input, Tabs, Button, Icon, Checkbox, Row, Col, Alert } from 'antd';
 import styles from './index.less';
 
@@ -15,12 +15,6 @@ export default class Login extends Component {
   state = {
     count: 0,
     type: 'account',
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.login.status === 'ok') {
-      this.props.dispatch(routerRedux.push('/'));
-    }
   }
 
   componentWillUnmount() {
@@ -52,7 +46,7 @@ export default class Login extends Component {
         if (!err) {
           const { userName, password } = values;
           this.props.dispatch({
-            type: 'userx/login',
+            type: 'user/login',
             payload: { username: userName, password },
           });
         }
@@ -72,7 +66,8 @@ export default class Login extends Component {
   }
 
   render() {
-    const { form, login } = this.props;
+    const login = this.props.login || {};
+    const { form } = this.props;
     const { getFieldDecorator } = form;
     const { count, type } = this.state;
     return (

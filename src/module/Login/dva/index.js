@@ -1,10 +1,9 @@
 import { login } from '../../../services/api';
 
 export default {
-  namespace: 'userx',
+  namespace: 'user',
 
   state: {
-    tags: [],
   },
 
   effects: {
