@@ -101,18 +101,6 @@ class LayoutHeader extends PureComponent {
       openKeys: latestOpenKey ? [latestOpenKey] : [],
     });
   }
-  toggle = () => {
-    const { collapsed } = this.props;
-    this.props.dispatch({
-      type: 'global/changeLayoutCollapsed',
-      payload: !collapsed,
-    });
-    this.resizeTimeout = setTimeout(() => {
-      const event = document.createEvent('HTMLEvents');
-      event.initEvent('resize', true, false);
-      window.dispatchEvent(event);
-    }, 600);
-  }
   handleNoticeClear = (type) => {
     message.success(`清空了${type}`);
     this.props.dispatch({
