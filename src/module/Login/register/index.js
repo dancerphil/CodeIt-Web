@@ -32,12 +32,6 @@ export default class Register extends Component {
     help: '',
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.register.status === 'ok') {
-      this.props.dispatch(routerRedux.push('/user/register-result'));
-    }
-  }
-
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -68,16 +62,17 @@ export default class Register extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFields({ force: true },
-      (err, values) => {
-        if (!err) {
-          this.props.dispatch({
-            type: 'register/submit',
-            payload: values,
-          });
-        }
-      }
-    );
+    this.props.dispatch(routerRedux.push('/user/register-result'));
+    // this.props.form.validateFields({ force: true },
+    //   (err, values) => {
+    //     if (!err) {
+    //       this.props.dispatch({
+    //         type: 'register/submit',
+    //         payload: values,
+    //       });
+    //     }
+    //   }
+    // );
   }
 
   handleConfirmBlur = (e) => {
