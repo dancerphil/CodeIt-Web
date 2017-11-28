@@ -11,10 +11,10 @@ export default class ButtonGroup extends PureComponent {
     });
   }
   handleRegister = () => {
-    // this.props.dispatch({
-    //   type: 'router/set',
-    //   payload: 'user/register',
-    // });
+    this.props.dispatch({
+      type: 'router/set',
+      payload: 'user/register',
+    });
   }
   render() {
     return (

@@ -9,8 +9,8 @@ import Workplace from '../module/Playground/preview/index';
 import Playground from '../module/Playground/view/index';
 
 import Login from '../module/Login/view/index';
-import Register from '../routes/User/Register';
-import RegisterResult from '../routes/User/RegisterResult';
+import Register from '../module/Login/register/index';
+import RegisterResult from '../module/Login/postregister/index';
 
 const data = [{
   component: BasicLayout,
