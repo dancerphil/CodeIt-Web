@@ -5,11 +5,11 @@ import { Row, Col, Card, List, Button } from 'antd';
 import styles from './index.less';
 
 @connect()
-export default class Workplace extends PureComponent {
+export default class Code extends PureComponent {
   handleClick = () => {
     this.props.dispatch({
       type: 'router/set',
-      payload: 'workplace/playground',
+      payload: 'code/playground',
     });
   }
   render() {

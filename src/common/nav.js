@@ -2,10 +2,10 @@ import BasicLayout from '../layouts/BasicLayout';
 import UserLayout from '../layouts/UserLayout';
 import BlankLayout from '../layouts/BlankLayout';
 
-import Analysis from '../module/HomePage/view/index';
-import Monitor from '../module/Course/view/index';
+import HomePage from '../module/HomePage/view/index';
+import Course from '../module/Course/view/index';
 import Lesson from '../module/Course/lesson/index';
-import Workplace from '../module/Playground/preview/index';
+import Code from '../module/Playground/preview/index';
 import Playground from '../module/Playground/view/index';
 
 import Login from '../module/Login/view/index';
@@ -18,30 +18,30 @@ const data = [{
   name: '首页', // for breadcrumb
   path: '',
   children: [{
-    name: '分析页',
-    path: 'analysis',
-    icon: 'dashboard',
-    component: Analysis,
+    name: '首页',
+    path: 'home',
+    icon: 'home',
+    component: HomePage,
     show: true,
   }, {
-    name: '监控页',
-    path: 'monitor',
-    icon: 'form',
-    component: Monitor,
+    name: '课程',
+    path: 'course',
+    icon: 'book',
+    component: Course,
     show: true,
   }, {
     name: 'lesson',
     path: 'course/:name',
     component: Lesson,
   }, {
-    name: '工作台',
-    path: 'workplace',
-    icon: 'table',
-    component: Workplace,
+    name: '代码',
+    path: 'code',
+    icon: 'code-o',
+    component: Code,
     show: true,
   }, {
     name: 'playground',
-    path: 'workplace/playground',
+    path: 'code/playground',
     component: Playground,
   }],
 }, {

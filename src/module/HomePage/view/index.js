@@ -4,7 +4,7 @@ import './index.less';
 import Part from '../../../components/Layout/Part';
 
 @connect()
-export default class Analysis extends Component {
+export default class HomePage extends Component {
   handleClick = href => () => {
     this.props.dispatch({
       type: 'router/set',

@@ -12,7 +12,7 @@ export default {
         const response = yield call(login, payload);
         yield put({
           type: 'router/set',
-          payload: 'analysis',
+          payload: 'home',
         });
         yield put({
           type: 'loginSuccess',

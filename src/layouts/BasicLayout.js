@@ -88,7 +88,7 @@ class BasicLayout extends React.PureComponent {
                 />
               ))
             }
-            <Redirect to="/analysis" />
+            <Redirect to="/home" />
           </Switch>
         </Content>
         <GlobalFooter />
