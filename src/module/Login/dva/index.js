@@ -1,4 +1,4 @@
-import { login } from '../../../services/api';
+import { login, profile } from '../../../services/api';
 
 export default {
   namespace: 'user',
@@ -9,14 +9,16 @@ export default {
   effects: {
     *login({ payload }, { call, put }) {
       try {
-        const response = yield call(login, payload);
+        const loginResponse = yield call(login, payload);
+        console.log(loginResponse);
         yield put({
           type: 'router/set',
           payload: 'home',
         });
+        const profileResponse = yield call(profile);
         yield put({
           type: 'loginSuccess',
-          payload: response.list,
+          payload: profileResponse,
         });
       } catch (e) {
         console.log(e);
@@ -28,7 +30,7 @@ export default {
     loginSuccess(state, action) {
       return {
         ...state,
-        tags: action.payload,
+        ...action.payload,
       };
     },
   },

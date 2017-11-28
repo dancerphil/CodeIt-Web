@@ -16,7 +16,6 @@ export default {
     },
     *lesson({ payload }, { call, put }) {
       const response = yield call(lesson, payload.id);
-      console.log(response);
       yield put({
         type: 'lessonSuccess',
         payload: response,

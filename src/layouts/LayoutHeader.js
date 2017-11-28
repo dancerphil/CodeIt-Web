@@ -20,6 +20,12 @@ class LayoutHeader extends PureComponent {
       openKeys: this.getDefaultCollapsedSubMenus(props),
     };
   }
+  onMenuClick = () => {
+    this.props.dispatch({
+      type: 'router/set',
+      payload: 'user/login',
+    });
+  }
   getDefaultCollapsedSubMenus(props) {
     const currentMenuSelectedKeys = [...this.getCurrentMenuSelectedKeys(props)];
     currentMenuSelectedKeys.splice(-1, 1);
@@ -116,14 +122,12 @@ class LayoutHeader extends PureComponent {
     }
   }
   render() {
-    console.log(this.props.state);
-    const { currentUser, collapsed } = this.props;
+    const currentUser = this.props.currentUser || {};
+    const { collapsed } = this.props;
+    console.log(currentUser);
 
     const menu = (
       <Menu className={styles.menu} selectedKeys={[]} onClick={this.onMenuClick}>
-        <Menu.Item disabled><Icon type="user" />个人中心</Menu.Item>
-        <Menu.Item disabled><Icon type="setting" />设置</Menu.Item>
-        <Menu.Divider />
         <Menu.Item key="logout"><Icon type="logout" />退出登录</Menu.Item>
       </Menu>
     );
@@ -135,12 +139,12 @@ class LayoutHeader extends PureComponent {
     let buttonGroup = (
       <ButtonGroup />
     );
-    if (currentUser.name) {
+    if (currentUser.username) {
       buttonGroup = (
         <Dropdown overlay={menu}>
           <span className={`${styles.action} ${styles.account}`}>
-            <Avatar size="small" className={styles.avatar} src={currentUser.avatar} />
-            {currentUser.name}
+            <Avatar size="small" className={styles.avatar} style={{ background: '#e9e9e9' }}>{currentUser.username.slice(0, 2)}</Avatar>
+            {currentUser.username}
           </span>
         </Dropdown>
       );
@@ -176,9 +180,8 @@ class LayoutHeader extends PureComponent {
 }
 
 export default connect(state => ({
-  currentUser: {},
+  currentUser: state.user.data,
   collapsed: state.global.collapsed,
   fetchingNotices: state.global.fetchingNotices,
   notices: state.global.notices,
-  state,
 }))(LayoutHeader);
