@@ -3,9 +3,17 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Row, Col, Card, List, Button } from 'antd';
 import styles from './index.less';
+import CodeItem from './CodeItem';
 
-@connect()
+@connect(state => ({
+  code: state.code,
+}))
 export default class Code extends PureComponent {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'code/get',
+    });
+  }
   handleClick = () => {
     this.props.dispatch({
       type: 'router/set',
@@ -13,10 +21,12 @@ export default class Code extends PureComponent {
     });
   }
   render() {
+    const $array = this.props.code.$array || [];
+    console.log($array);
     return (
       <div style={{ margin: '20px' }}>
         <Row gutter={24}>
-          <Col xl={16} lg={24} md={24} sm={24} xs={24}>
+          <Col xl={24} lg={24} md={24} sm={24} xs={24}>
             <Card
               className={styles.projectList}
               style={{ marginBottom: 24 }}
@@ -24,58 +34,24 @@ export default class Code extends PureComponent {
               bordered={false}
               extra={<Link to="/">全部项目</Link>}
               loading={false}
-              bodyStyle={{ padding: 0 }}
+              bodyStyle={{ padding: '32px 32px 40px 32px' }}
             >
-              <Button
-                type="primary"
-                onClick={this.handleClick}
-              >
-              New Code
-              </Button>
-            </Card>
-            <Card
-              bodyStyle={{ padding: 0 }}
-              bordered={false}
-              className={styles.activeCard}
-              title="动态"
-              loading={false}
-            >
-              <List loading={false} size="large">
-                <div className={styles.activitiesList}>
-                  {'xxx'}
-                </div>
-              </List>
-            </Card>
-          </Col>
-          <Col xl={8} lg={24} md={24} sm={24} xs={24}>
-            <Card
-              style={{ marginBottom: 24 }}
-              title="快速开始 / 便捷导航"
-              bordered={false}
-              bodyStyle={{ padding: 0 }}
-            >
-              {'xxx'}
-            </Card>
-            <Card
-              style={{ marginBottom: 24 }}
-              bordered={false}
-              title="XX 指数"
-              loading={false}
-            >
-              <div className={styles.chart}>
-                {'xxx'}
+              <div>
+                <Button
+                  type="primary"
+                  onClick={this.handleClick}
+                >
+                  {'New Code'}
+                </Button>
               </div>
-            </Card>
-            <Card
-              bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}
-              bordered={false}
-              title="团队"
-            >
-              <div className={styles.members}>
-                <Row gutter={48}>
-                  {'xxx'}
-                </Row>
-              </div>
+              <List
+                size="large"
+                rowKey="id"
+                dataSource={$array}
+                renderItem={item => (
+                  <CodeItem item={item} />
+                )}
+              />
             </Card>
           </Col>
         </Row>

@@ -1,7 +1,8 @@
 import dva from 'dva';
 import 'moment/locale/zh-cn';
-import course from './module/Course/dva';
 import login from './module/Login/dva';
+import course from './module/Course/dva';
+import code from './module/Playground/dva';
 import models from './models/index';
 import './polyfill';
 import './g2';
@@ -20,8 +21,9 @@ const app = dva({
 models.forEach((m) => {
   app.model(m);
 });
-app.model(course);
 app.model(login);
+app.model(course);
+app.model(code);
 
 // 4. Router
 app.router(require('./router'));

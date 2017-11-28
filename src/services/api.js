@@ -25,6 +25,10 @@ export async function course() {
   return r('/api/class/find');
 }
 
+export async function code() {
+  return r('/api/code/find');
+}
+
 export async function lesson(id) {
   return r('/api/class/lesson/find', { cid: id });
 }

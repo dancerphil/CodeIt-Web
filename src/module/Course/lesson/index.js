@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { List, Card } from 'antd';
+import LessonItem from './LessonItem';
 
 @connect(state => ({
   course: state.course,
@@ -33,14 +34,7 @@ export default class Course extends PureComponent {
             rowKey="id"
             dataSource={$array}
             renderItem={item => (
-              <List.Item
-                actions={[<a>{item.quizzes}</a>]}
-              >
-                <List.Item.Meta
-                  title={`${item.order} | ${item.title}`}
-                />
-                <div />
-              </List.Item>
+              <LessonItem item={item} />
           )}
           />
         </Card>
