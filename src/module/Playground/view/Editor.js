@@ -1,8 +1,10 @@
 // todo
-/* eslint-disable */
+/* eslint-disable import/no-dynamic-require */
 import React, { Component } from 'react';
 import AceEditor from 'react-ace';
-import { Tabs, Select } from 'antd';
+import { Tabs, Select, Button } from 'antd';
+import 'brace/ext/language_tools';
+import 'brace/ext/searchbox';
 import { editorLayout, extraButton } from './commonStyle';
 
 const { TabPane } = Tabs;
@@ -48,8 +50,6 @@ languages.forEach((lang) => {
 themes.forEach((theme) => {
   require(`brace/theme/${theme}`);
 });
-import 'brace/ext/language_tools';
-import 'brace/ext/searchbox';
 
 
 const defaultValue =
@@ -57,6 +57,21 @@ const defaultValue =
   console.log("i've loaded");
 }`;
 export default class Editor extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: defaultValue,
+      theme: 'monokai',
+      mode: 'javascript',
+      fontSize: 14,
+    };
+    this.setTheme = this.setTheme.bind(this);
+    this.setMode = this.setMode.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.setFontSize = this.setFontSize.bind(this);
+    this.setBoolean = this.setBoolean.bind(this);
+  }
+
   onLoad() {
     console.log('i\'ve loaded');
   }
@@ -101,20 +116,6 @@ export default class Editor extends Component {
       fontSize: parseInt(value, 10),
     });
   }
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: defaultValue,
-      theme: 'monokai',
-      mode: 'javascript',
-      fontSize: 14,
-    };
-    this.setTheme = this.setTheme.bind(this);
-    this.setMode = this.setMode.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.setFontSize = this.setFontSize.bind(this);
-    this.setBoolean = this.setBoolean.bind(this);
-  }
   renderTabBarExtraContent() {
     return (
       <div>
@@ -132,39 +133,45 @@ export default class Editor extends Component {
   }
   render() {
     return (
-      <Tabs
-        style={{ background: '#2f3129' }}
-        tabBarStyle={{ marginBottom: '0px', borderBottom: '1px solid #2f3129' }}
-        tabBarExtraContent={this.renderTabBarExtraContent()}
-      >
-        <TabPane
-          tab={<div style={{ color: 'white' }} >{this.state.mode}</div>}
+      <div>
+        <Tabs
+          style={{ background: '#2f3129' }}
+          tabBarStyle={{ marginBottom: '0px', borderBottom: '1px solid #2f3129' }}
+          tabBarExtraContent={this.renderTabBarExtraContent()}
         >
-          <AceEditor
-            style={editorLayout}
-            mode={this.state.mode}
-            theme={this.state.theme}
-            name="blah2"
-            onLoad={this.onLoad}
-            onChange={this.onChange}
-            onSelectionChange={this.onSelectionChange}
-            onCursorChange={this.onCursorChange}
-            onValidate={this.onValidate}
-            value={this.state.value}
-            fontSize={this.state.fontSize}
-            showPrintMargin
-            showGutter
-            highlightActiveLine
-            setOptions={{
-                enableBasicAutocompletion: true,
-                enableLiveAutocompletion: true,
-                enableSnippets: true,
-                showLineNumbers: true,
-                tabSize: 2,
-              }}
-          />
-        </TabPane>
-      </Tabs>
+          <TabPane
+            tab={<div style={{ color: 'white' }} >{this.state.mode}</div>}
+          >
+            <AceEditor
+              style={editorLayout}
+              mode={this.state.mode}
+              theme={this.state.theme}
+              name="blah2"
+              onLoad={this.onLoad}
+              onChange={this.onChange}
+              onSelectionChange={this.onSelectionChange}
+              onCursorChange={this.onCursorChange}
+              onValidate={this.onValidate}
+              value={this.state.value}
+              fontSize={this.state.fontSize}
+              showPrintMargin
+              showGutter
+              highlightActiveLine
+              setOptions={{
+                  enableBasicAutocompletion: true,
+                  enableLiveAutocompletion: true,
+                  enableSnippets: true,
+                  showLineNumbers: true,
+                  tabSize: 2,
+                }}
+            />
+          </TabPane>
+        </Tabs>
+        <div style={{ padding: '10px', background: '#2f3129', display: 'flex', justifyContent: 'flex-end' }}>
+          <Button style={{ marginRight: '20px' }}>保存</Button>
+          <Button style={{ marginRight: '10px' }}>运行</Button>
+        </div>
+      </div>
     );
   }
 }

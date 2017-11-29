@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Tabs, Button } from 'antd';
-import { editorLayout, extraButton } from './commonStyle';
+import { outputLayout, extraButton } from './commonStyle';
 
 const { TabPane } = Tabs;
 
@@ -23,7 +23,7 @@ export default class Output extends PureComponent {
         <TabPane
           tab={<div style={{ color: 'white' }} >Output</div>}
         >
-          <div style={editorLayout}>
+          <div style={outputLayout}>
             {'功能正在开发中'}
           </div>
         </TabPane>
