@@ -23,7 +23,7 @@ export default class ClassCard extends PureComponent {
       <Card hoverable actions={actions} onClick={this.handleClick(item)}>
         <Card.Meta
           avatar={<img alt="" src={item.icon} />}
-          title={<a href="#">{item.name}</a>}
+          title={item.name}
           description={(
             <div>{item.intro}</div>
           )}
