@@ -76,7 +76,10 @@ export default class Editor extends Component {
     console.log('i\'ve loaded');
   }
   onChange(newValue) {
-    console.log('change', newValue);
+    const { onTextChange } = this.props;
+    if (onTextChange) {
+      onTextChange(newValue);
+    }
     this.setState({
       value: newValue,
     });
@@ -132,6 +135,10 @@ export default class Editor extends Component {
     );
   }
   render() {
+    let { text } = this.props;
+    if (text === undefined) {
+      text = this.state.value;
+    }
     return (
       <div>
         <Tabs
@@ -152,7 +159,7 @@ export default class Editor extends Component {
               onSelectionChange={this.onSelectionChange}
               onCursorChange={this.onCursorChange}
               onValidate={this.onValidate}
-              value={this.state.value}
+              value={text}
               fontSize={this.state.fontSize}
               showPrintMargin
               showGutter
