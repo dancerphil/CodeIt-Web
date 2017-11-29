@@ -7,25 +7,25 @@ import Playground from '../../Playground/view/index';
 @connect()
 export default class Chat extends PureComponent {
   state = {
-    text: '',
+    text: '\r\n',
     socket: {},
   }
   componentDidMount() {
     const socket = io();
-    const { state } = this;
     socket.on('left', (msg) => {
-      console.log(`state.text = applyPatch(state.text, msg)${applyPatch(state.text, msg)};`);
-      state.text = applyPatch(state.text, msg);
+      console.log(`state.text = applyPatch(state.text, msg)${applyPatch(this.state.text, msg)};`);
+      this.setState({ text: `${applyPatch(this.state.text, msg)}\r\n` });
     });
     this.state.socket = socket;
   }
 
   handleTextChange = (newValue) => {
+    const value = `${newValue}\r\n`;
     const { text, socket } = this.state;
     if (socket) {
-      console.log(`socket.emit('left', createPatch('left', text, newValue))${createPatch('left', text, newValue)}`);
-      socket.emit('left', createPatch('left', text, newValue));
-      this.setState({ text: newValue });
+      console.log(`socket.emit('left', createPatch('left', text, newValue))${createPatch('left', text, value)}`);
+      socket.emit('left', createPatch('left', text, value));
+      this.setState({ text: value });
     } else {
       console.log('no socket');
     }
