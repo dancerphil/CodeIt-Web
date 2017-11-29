@@ -124,7 +124,6 @@ class LayoutHeader extends PureComponent {
   render() {
     const currentUser = this.props.currentUser || {};
     const { collapsed } = this.props;
-    console.log(currentUser);
 
     const menu = (
       <Menu className={styles.menu} selectedKeys={[]} onClick={this.onMenuClick}>

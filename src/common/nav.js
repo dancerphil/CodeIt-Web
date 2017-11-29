@@ -7,6 +7,7 @@ import Course from '../module/Course/view/index';
 import Lesson from '../module/Course/lesson/index';
 import Code from '../module/Playground/preview/index';
 import Playground from '../module/Playground/view/index';
+import Chat from '../module/Chat/view/index';
 
 import Login from '../module/Login/view/index';
 import Register from '../module/Login/register/index';
@@ -43,6 +44,12 @@ const data = [{
     name: 'playground',
     path: 'code/playground',
     component: Playground,
+  }, {
+    name: '一对一',
+    path: 'chat',
+    icon: 'sync',
+    component: Chat,
+    show: true,
   }],
 }, {
   component: UserLayout,

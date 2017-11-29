@@ -24,6 +24,11 @@
     "/api": {
       "target": "http://106.14.120.241",
       "changeOrigin": true
+    },
+    "/ws": {
+      "target": "http://106.14.120.241",
+      "pathRewrite": {"^/ws": ""},
+      "changeOrigin": true
     }
   }
 }
