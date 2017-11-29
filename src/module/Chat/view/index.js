@@ -14,7 +14,7 @@ export default class Chat extends PureComponent {
     const socket = io();
     socket.on('left', (msg) => {
       console.log(`state.text = applyPatch(state.text, msg)${applyPatch(this.state.text, msg)};`);
-      this.setState({ text: `${applyPatch(this.state.text, msg)}` });
+      this.setState({ text: `${applyPatch(this.state.text, msg)}\r\n` });
     });
     this.state.socket = socket;
   }
