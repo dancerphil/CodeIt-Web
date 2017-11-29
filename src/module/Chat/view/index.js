@@ -4,23 +4,34 @@ import io from 'socket.io-client';
 import { applyPatch, createPatch } from 'diff';
 import Playground from '../../Playground/view/index';
 
+const dealWith = (str) => {
+  const l = str.length;
+  if (l < 2) {
+    return `${str}\r\n`;
+  }
+  if (str.slice(l - 2, l) !== '\r\n') {
+    return `${str}\r\n`;
+  }
+  return str;
+};
+
 @connect()
 export default class Chat extends PureComponent {
   state = {
-    text: '\r\n',
+    text: dealWith(''),
     socket: {},
   }
   componentDidMount() {
     const socket = io();
     socket.on('left', (msg) => {
       console.log(`state.text = applyPatch(state.text, msg)${applyPatch(this.state.text, msg)};`);
-      this.setState({ text: `${applyPatch(this.state.text, msg)}\r\n` });
+      this.setState({ text: dealWith(`${applyPatch(this.state.text, msg)}`) });
     });
     this.state.socket = socket;
   }
 
   handleTextChange = (newValue) => {
-    const value = `${newValue}`;
+    const value = dealWith(`${newValue}`);
     const { text, socket } = this.state;
     if (socket) {
       console.log(`socket.emit('left', createPatch('left', text, newValue))${createPatch('left', text, value)}`);
