@@ -1,6 +1,7 @@
 // todo
 /* eslint-disable import/no-dynamic-require */
 import React, { Component } from 'react';
+import { connect } from 'dva';
 import AceEditor from 'react-ace';
 import { Tabs, Select } from 'antd';
 import 'brace/mode/javascript';
@@ -34,6 +35,8 @@ const defaultValue =
   `function onLoad(editor) {
   console.log("i've loaded");
 }`;
+
+@connect()
 export default class Editor extends Component {
   constructor(props) {
     super(props);
@@ -134,7 +137,13 @@ export default class Editor extends Component {
             />
           </TabPane>
         </Tabs>
-        <ButtonGroup />
+        <ButtonGroup handleSave={(title) => {
+          this.props.dispatch({
+            type: 'code/save',
+            payload: { public: true, title, type: this.state.mode, content: this.state.value, tags: [] },
+          });
+        }}
+        />
       </div>
     );
   }

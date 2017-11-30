@@ -29,6 +29,11 @@ export async function code() {
   return r('/api/code/find');
 }
 
+export async function saveCode(params) {
+  console.log(params);
+  return r('/api/code/save', params);
+}
+
 export async function lesson(id) {
   return r('/api/class/lesson/find', { cid: id });
 }

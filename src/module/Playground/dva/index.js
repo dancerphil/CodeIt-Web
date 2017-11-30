@@ -1,4 +1,4 @@
-import { code } from '../../../services/api';
+import { code, saveCode } from '../../../services/api';
 
 export default {
   namespace: 'code',
@@ -13,6 +13,13 @@ export default {
         type: 'getSuccess',
         payload: response,
       });
+    },
+    *save({ payload }, { call }) {
+      try {
+        yield call(saveCode, payload);
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 
