@@ -2,10 +2,19 @@
 /* eslint-disable import/no-dynamic-require */
 import React, { Component } from 'react';
 import AceEditor from 'react-ace';
-import { Tabs, Select, Button } from 'antd';
+import { Tabs, Select } from 'antd';
+import 'brace/mode/javascript';
+import 'brace/mode/java';
+import 'brace/mode/python';
+import 'brace/snippets/javascript';
+import 'brace/snippets/java';
+import 'brace/snippets/python';
+import 'brace/theme/monokai';
+import 'brace/theme/github';
 import 'brace/ext/language_tools';
 import 'brace/ext/searchbox';
 import { editorLayout, extraButton } from './commonStyle';
+import ButtonGroup from './ButtonGroup';
 
 const { TabPane } = Tabs;
 const { Option } = Select;
@@ -14,43 +23,12 @@ const languages = [
   'javascript',
   'java',
   'python',
-  'xml',
-  'ruby',
-  'sass',
-  'markdown',
-  'mysql',
-  'json',
-  'html',
-  'handlebars',
-  'golang',
-  'csharp',
-  'elixir',
-  'typescript',
-  'css',
 ];
 
 const themes = [
   'monokai',
   'github',
-  'tomorrow',
-  'kuroir',
-  'twilight',
-  'xcode',
-  'textmate',
-  'solarized_dark',
-  'solarized_light',
-  'terminal',
 ];
-
-languages.forEach((lang) => {
-  require(`brace/mode/${lang}`);
-  require(`brace/snippets/${lang}`);
-});
-
-themes.forEach((theme) => {
-  require(`brace/theme/${theme}`);
-});
-
 
 const defaultValue =
   `function onLoad(editor) {
@@ -156,10 +134,7 @@ export default class Editor extends Component {
             />
           </TabPane>
         </Tabs>
-        <div style={{ padding: '10px', background: '#2f3129', display: 'flex', justifyContent: 'flex-end' }}>
-          <Button style={{ marginRight: '20px' }}>保存</Button>
-          <Button style={{ marginRight: '10px' }}>运行</Button>
-        </div>
+        <ButtonGroup />
       </div>
     );
   }
