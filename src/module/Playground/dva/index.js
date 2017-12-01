@@ -1,4 +1,4 @@
-import { code, saveCode } from '../../../services/api';
+import { code, codeCreate, codeCheck } from '../../../services/api';
 
 export default {
   namespace: 'code',
@@ -14,12 +14,23 @@ export default {
         payload: response,
       });
     },
-    *save({ payload }, { call }) {
+    *save({ payload }, { call, put }) {
       try {
-        yield call(saveCode, payload);
+        const response = yield call(codeCreate, payload);
+        yield put({
+          type: 'getSuccess',
+          payload: { codeId: response.op.$id },
+        });
       } catch (e) {
         console.log(e);
       }
+    },
+    *run({ payload }, { call, put }) {
+      const response = yield call(codeCheck, payload);
+      yield put({
+        type: 'getSuccess',
+        payload: { data: response.data },
+      });
     },
   },
 

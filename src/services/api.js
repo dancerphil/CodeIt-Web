@@ -29,9 +29,12 @@ export async function code() {
   return r('/api/code/find');
 }
 
-export async function saveCode(params) {
-  console.log(params);
-  return r('/api/code/save', params);
+export async function codeCreate(params) {
+  return r('/api/code/create', params);
+}
+
+export async function codeCheck(params) {
+  return r('/api/code/check', params);
 }
 
 export async function lesson(id) {

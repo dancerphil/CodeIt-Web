@@ -5,7 +5,9 @@ import { outputLayout, extraButton } from './commonStyle';
 
 const { TabPane } = Tabs;
 
-@connect()
+@connect(state => ({
+  code: state.code,
+}))
 export default class Output extends PureComponent {
   tabBarExtraContent = (
     <div>
@@ -14,6 +16,12 @@ export default class Output extends PureComponent {
   )
 
   render() {
+    console.log(this.props.code);
+    const { data } = this.props.code;
+    let output = '';
+    if (data) {
+      output = data.stdout || '';
+    }
     return (
       <Tabs
         style={{ background: '#2f3129', color: 'white' }}
@@ -24,7 +32,7 @@ export default class Output extends PureComponent {
           tab={<div style={{ color: 'white' }} >Output</div>}
         >
           <div style={outputLayout}>
-            {'功能正在开发中'}
+            {output}
           </div>
         </TabPane>
       </Tabs>
