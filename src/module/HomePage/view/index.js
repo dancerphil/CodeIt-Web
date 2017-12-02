@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import './index.less';
 import Part from '../../../components/Layout/Part';
+import ColumnItem from './ColumnItem';
+
+const columns = [{
+  code: 'courses',
+  title: '丰富的在线资源',
+  description: '我们提供了丰富的在线资源，保证用户能够找到最适合自己的教程。每门课程都合理地划分了不同的章节，循序渐进。同时还配有相应的测试题，以供巩固知识。相信你一定能够享受学习的乐趣，并且得到提升。',
+}, {
+  code: 'communication',
+  title: '方便的交流平台',
+  description: '如果你在学习的过程中遇到任何问题，不用烦恼，你随时可以将它发表到讨论区，让其他人来解决你的疑惑。当然，如果你写出了漂亮的代码，你也可以将它与众人分享。毕竟，授人玫瑰，手有余香。',
+}, {
+  code: 'guidance',
+  title: '细心的真人指导',
+  description: '尽管强大的自学能力是一个优秀的程序员必备的素质，但是我们仍然真诚地希望给你最大程度地帮助。尤其对于新手来说，我们有贴心的在线一对一真人指导服务，任何时候，你都可以预约到你想要的老师，为你排忧解难。',
+}];
 
 @connect()
 export default class HomePage extends Component {
@@ -18,46 +33,21 @@ export default class HomePage extends Component {
         <div className="jumbotron jumbotron-fluid m-0">
           <div className="container">
             <h4 className="text-center">每个人都可以学习计算机编程</h4>
+            <br />
             <p>很多人往往会觉得编程很难，甚至比其他学科还要难。其实，它与其他学科一样：是知识，是工具，是我们需要学习的一种能力。任何学科都是给人一个机会去发现自己，探索世界，找到与世界的联系的能力。每个学科似乎彼此独立，但实际上相互交叉。</p>
           </div>
           <br />
           <br />
           <div className="container text-center">
             <div className="row">
-              <div className="col">
-                <div className="container">
-                  <img className="m-4" src={require('../assets/courses.svg')} alt="" width="64px" height="64px" />
-                  <h5>丰富的在线资源</h5>
-                  <small>我们提供了丰富的在线资源，保证用户能够找到最适合自己的教程。每门课程都合理地划分了不同的章节，循序渐进。
-                            同时还配有相应的测试题，以供巩固知识。相信你一定能够享受学习的乐趣，并且得到提升。
-                  </small>
-                </div>
-              </div>
-              <div className="col">
-                <div className="container">
-                  <img className="m-4" src={require('../assets/communication.svg')} alt="" width="64px" height="64px" />
-                  <h5>方便的交流平台</h5>
-                  <small>
-                            如果你在学习的过程中遇到任何问题，不用烦恼，你随时可以将它发表到讨论区，让其他人来解决你的疑惑。当然，如果你写出了漂亮的代码，你也可以将它与众人分享。毕竟，授人玫瑰，手有余香。
-                  </small>
-                </div>
-              </div>
-              <div className="col">
-                <div className="container">
-                  <img className="m-4" src={require('../assets/guidance.svg')} alt="" width="64px" height="64px" />
-                  <h5>细心的真人指导</h5>
-                  <small>
-                            尽管强大的自学能力是一个优秀的程序员必备的素质，但是我们仍然真诚地希望给你最大程度地帮助。尤其对于新手来说，我们有贴心的在线一对一真人指导服务，任何时候，你都可以预约到你想要的老师，为你排忧解难。
-                  </small>
-                </div>
-              </div>
+              {columns.map(item => <ColumnItem {...item} />)}
             </div>
           </div>
         </div>
 
         <Part className="p-5" style={{ backgroundColor: '#08ABA6' }}>
           <div className="container text-center text-white">
-            <h3><strong>他们</strong>都<strong>说</strong>过什么</h3>
+            <h3 className="text-white">他们都说过什么</h3>
           </div>
           <div className="container text-center mt-5">
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">

@@ -1,35 +1,22 @@
 import React, { PureComponent } from 'react';
 import { Form, Input, Button, Col, Row } from 'antd';
-import { Icon } from 'react-fa';
 import Part from '../../components/Layout/Part';
-
-const Big = ({ number, text }) => {
-  return <h4 style={{ color: 'white' }}><strong><big>{number}</big></strong>{text}</h4>;
-};
+import ColumnItem from './ColumnItem';
 
 export default class BasicForms extends PureComponent {
   render() {
     return (
       <div>
-        <Part className="p-5 text-center text-white" style={{ backgroundColor: '#05585C' }}>
+        <Part style={{ backgroundColor: '#05585C' }}>
           <div className="container">
             <Row gutter={24}>
-              <Col span={8}>
-                <p><Icon name="users" /></p>
-                <Big number={23864} text="位用户" />
-              </Col>
-              <Col span={8}>
-                <p><Icon name="comments" /></p>
-                <Big number={36548} text="次讨论" />
-              </Col>
-              <Col span={8}>
-                <p><Icon name="code" /></p>
-                <Big number={65371} text="份代码" />
-              </Col>
+              <ColumnItem name="users" number={23864} text="位用户" />
+              <ColumnItem name="comments" number={36548} text="次讨论" />
+              <ColumnItem name="code" number={65371} text="份代码" />
             </Row>
           </div>
         </Part>
-        <Part className="p-5 text-secondary" style={{ backgroundColor: '#252525' }}>
+        <Part style={{ backgroundColor: '#252525', textAlign: 'left' }}>
           <div className="container">
             <Row gutter={24}>
               <Col span={8}>
@@ -69,7 +56,7 @@ export default class BasicForms extends PureComponent {
                     />
                   </Form.Item>
                   <Button type="primary" htmlType="submit">
-                    确认提交
+                    <a href="mailto: 413149044@qq.com">确认提交</a>
                   </Button>
                 </Form>
               </Col>
