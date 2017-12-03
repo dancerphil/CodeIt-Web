@@ -20,6 +20,11 @@ const columns = [{
 
 @connect()
 export default class HomePage extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'home/init',
+    });
+  }
   handleClick = href => () => {
     this.props.dispatch({
       type: 'router/set',

@@ -13,6 +13,10 @@ async function r(url, body) {
   return request(url, { method: 'POST' });
 }
 
+export async function adminUser(params) {
+  return r('/api/admin/user/find', params);
+}
+
 export async function login(params) {
   return r('/api/user/login', params);
 }
@@ -25,12 +29,20 @@ export async function register(params) {
   return r('/api/user/register', params);
 }
 
-export async function course() {
-  return r('/api/class/find');
+export async function course(params) {
+  return r('/api/class/find', params);
 }
 
-export async function code() {
-  return r('/api/code/find');
+export async function lesson(id) {
+  return r('/api/class/lesson/find', { cid: id });
+}
+
+export async function content(params) {
+  return r('/api/class/lesson/findOne', params);
+}
+
+export async function code(params) {
+  return r('/api/code/find', params);
 }
 
 export async function codeCreate(params) {
@@ -41,12 +53,8 @@ export async function codeCheck(params) {
   return r('/api/code/check', params);
 }
 
-export async function lesson(id) {
-  return r('/api/class/lesson/find', { cid: id });
-}
-
-export async function content(params) {
-  return r('/api/class/lesson/findOne', params);
+export async function bulletin(params) {
+  return r('/api/bulletin/find', params);
 }
 
 export async function queryProjectNotice() {
