@@ -26,10 +26,13 @@ export default class Chat extends PureComponent {
     const socket = io();
     socket.on('left', (msg) => {
       console.log(`state.text = applyPatch(state.text, msg)${applyPatch(this.props.code.content, msg)};`);
-      this.props.dispatch({
-        type: 'code/set',
-        payload: { content: dealWith(`${applyPatch(this.props.code.content, msg)}`) },
-      });
+      const text = applyPatch(this.props.code.content, msg);
+      if (text) {
+        this.props.dispatch({
+          type: 'code/set',
+          payload: { content: dealWith(`${text}`) },
+        });
+      }
     });
     this.state.socket = socket;
   }
