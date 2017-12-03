@@ -5,13 +5,17 @@ import { applyPatch, createPatch } from 'diff';
 import Playground from '../../Playground/view/index';
 
 const dealWith = (str) => {
+  console.log(`dealing with: ${str}`);
   const l = str.length;
   if (l === 0) {
+    console.log('returns: \\r\\n');
     return '\r\n';
   }
   if (str.slice(l - 1, l) !== '\n') {
+    console.log('returns: raw + \\r\\n');
     return `${str}\r\n`;
   }
+  console.log('returns: raw');
   return str;
 };
 
@@ -29,12 +33,12 @@ export default class Chat extends PureComponent {
       payload: { content: dealWith('') },
     });
     socket.on('left', (msg) => {
-      console.log(`state.text = applyPatch(state.text, msg)${applyPatch(this.props.code.content, msg)};`);
+      console.log(`applyPatch(state.text, msg): ${applyPatch(this.props.code.content, msg)}`);
       const text = applyPatch(this.props.code.content, msg);
       if (text) {
         this.props.dispatch({
           type: 'code/set',
-          payload: { content: dealWith(`${text}`) },
+          payload: { content: dealWith(text) },
         });
       }
     });
@@ -42,10 +46,10 @@ export default class Chat extends PureComponent {
   }
 
   handleTextChange = (newValue) => {
-    const value = dealWith(`${newValue}`);
+    const value = dealWith(newValue);
     const { socket } = this.state;
     if (socket) {
-      console.log(`socket.emit('left', createPatch('left', text, newValue))${createPatch('left', this.props.code.content, value)}`);
+      console.log(`createPatch('left', text, newValue)): ${createPatch('left', this.props.code.content, value)}`);
       socket.emit('left', createPatch('left', this.props.code.content, value));
     } else {
       console.log('no socket');
