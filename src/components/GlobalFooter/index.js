@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Form, Input, Button, Col, Row } from 'antd';
+import { Button, Col, Row } from 'antd';
 import Part from '../../components/Layout/Part';
 import ColumnItem from './ColumnItem';
 
@@ -27,38 +27,17 @@ export default class BasicForms extends PureComponent {
                 </small>
               </Col>
               <Col span={8}>
-                <p style={{ fontSize: '75%', lineHeight: '2' }}>纽佰瑞编程教育有限公司</p>
-                <p style={{ fontSize: '75%', lineHeight: '2' }}>办公地址：上海市杨浦区复旦大学创新创业学院308</p>
-                <p style={{ fontSize: '75%', lineHeight: '2' }}>电子邮箱：codeit@outlook.com</p>
-                <p style={{ fontSize: '75%', lineHeight: '2' }}>联系电话：1234567890</p>
-                <p style={{ fontSize: '75%', lineHeight: '2s' }}>微信公众号：纽佰瑞编程</p>
+                <p style={{ fontSize: '75%' }}>纽佰瑞编程教育有限公司</p>
+                <p style={{ fontSize: '75%' }}>办公地址：上海市杨浦区复旦大学创新创业学院308</p>
+                <p style={{ fontSize: '75%' }}>电子邮箱：codeit@outlook.com</p>
+                <p style={{ fontSize: '75%' }}>联系电话：1234567890</p>
+                <p style={{ fontSize: '75%' }}>微信公众号：纽佰瑞编程</p>
               </Col>
               <Col span={8}>
-                <Form
-                  onSubmit={this.handleSubmit}
-                  hideRequiredMark
-                >
-                  <Form.Item>
-                    <Input
-                      type="email"
-                      className="form-control form-control-sm"
-                      id="Email"
-                      placeholder="留下您的联系邮箱便于我们回复"
-                    />
-                  </Form.Item>
-                  <Form.Item>
-                    <Input.TextArea
-                      type="password"
-                      className="form-control form-control-sm"
-                      id="Content"
-                      placeholder="写下您宝贵的建议或疑问"
-                      rows="4"
-                    />
-                  </Form.Item>
-                  <Button type="primary" htmlType="submit">
-                    <a href="mailto: 413149044@qq.com">确认提交</a>
-                  </Button>
-                </Form>
+                <p style={{ fontSize: '75%' }}>Newbrain Inc.</p>
+                <Button type="primary" htmlType="submit">
+                  <a href="mailto:codeit@outlook.com">联系我们</a>
+                </Button>
               </Col>
             </Row>
           </div>
