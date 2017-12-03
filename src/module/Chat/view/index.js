@@ -6,10 +6,10 @@ import Playground from '../../Playground/view/index';
 
 const dealWith = (str) => {
   const l = str.length;
-  if (l < 2) {
-    return `${str}\r\n`;
+  if (l === 0) {
+    return '\r\n';
   }
-  if (str.slice(l - 2, l) !== '\r\n') {
+  if (str.slice(l - 1, l) !== '\n') {
     return `${str}\r\n`;
   }
   return str;
@@ -24,6 +24,10 @@ export default class Chat extends PureComponent {
   }
   componentDidMount() {
     const socket = io();
+    this.props.dispatch({
+      type: 'code/set',
+      payload: { content: dealWith('') },
+    });
     socket.on('left', (msg) => {
       console.log(`state.text = applyPatch(state.text, msg)${applyPatch(this.props.code.content, msg)};`);
       const text = applyPatch(this.props.code.content, msg);
