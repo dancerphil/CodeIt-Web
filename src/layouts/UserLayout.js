@@ -34,10 +34,10 @@ class UserLayout extends React.PureComponent {
               <div className={styles.header}>
                 <Link to="/">
                   <img alt="" className={styles.logo} src="https://gw.alipayobjects.com/zos/rmsportal/NGCCBOENpgTXpBWUIPnI.svg" />
-                  <span className={styles.title}>Ant Design</span>
+                  <span className={styles.title}>CodeIt</span>
                 </Link>
               </div>
-              <p className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</p>
+              <p className={styles.desc}>致力于打造最优秀的在线编程学习平台</p>
             </div>
             {
             getRouteData('UserLayout').map(item =>
