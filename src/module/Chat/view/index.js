@@ -15,28 +15,31 @@ const dealWith = (str) => {
   return str;
 };
 
-@connect()
+@connect(state => ({
+  code: state.code,
+}))
 export default class Chat extends PureComponent {
   state = {
-    text: dealWith(''),
     socket: {},
   }
   componentDidMount() {
     const socket = io();
     socket.on('left', (msg) => {
-      console.log(`state.text = applyPatch(state.text, msg)${applyPatch(this.state.text, msg)};`);
-      this.setState({ text: dealWith(`${applyPatch(this.state.text, msg)}`) });
+      console.log(`state.text = applyPatch(state.text, msg)${applyPatch(this.props.code.content, msg)};`);
+      this.props.dispatch({
+        type: 'code/set',
+        payload: { content: dealWith(`${applyPatch(this.props.code.content, msg)}`) },
+      });
     });
     this.state.socket = socket;
   }
 
   handleTextChange = (newValue) => {
     const value = dealWith(`${newValue}`);
-    const { text, socket } = this.state;
+    const { socket } = this.state;
     if (socket) {
-      console.log(`socket.emit('left', createPatch('left', text, newValue))${createPatch('left', text, value)}`);
-      socket.emit('left', createPatch('left', text, value));
-      this.setState({ text: value });
+      console.log(`socket.emit('left', createPatch('left', text, newValue))${createPatch('left', this.props.code.content, value)}`);
+      socket.emit('left', createPatch('left', this.props.code.content, value));
     } else {
       console.log('no socket');
     }
@@ -45,7 +48,7 @@ export default class Chat extends PureComponent {
   render() {
     return (
       <div>
-        <Playground text={this.state.text} onTextChange={this.handleTextChange} />
+        <Playground onTextChange={this.handleTextChange} />
       </div>
     );
   }

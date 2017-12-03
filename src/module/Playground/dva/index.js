@@ -1,9 +1,11 @@
-import { code, codeCreate, codeCheck } from '../../../services/api';
+import { code, codeDetail, codeCreate, codeCheck } from '../../../services/api';
 
 export default {
   namespace: 'code',
 
   state: {
+    content: 'print(\'init\')\r\n',
+    type: 'python',
   },
 
   effects: {
@@ -12,6 +14,23 @@ export default {
       yield put({
         type: 'getSuccess',
         payload: response,
+      });
+    },
+    *set({ payload }, { put }) {
+      yield put({
+        type: 'getSuccess',
+        payload,
+      });
+    },
+    *detail({ payload }, { call, put }) {
+      const response = yield call(codeDetail, payload);
+      yield put({
+        type: 'getSuccess',
+        payload: response.data,
+      });
+      yield put({
+        type: 'router/set',
+        payload: 'code/playground',
       });
     },
     *save({ payload }, { call, put }) {

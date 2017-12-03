@@ -45,6 +45,10 @@ export async function code(params) {
   return r('/api/code/find', params);
 }
 
+export async function codeDetail(params) {
+  return r('/api/code/findOne', params);
+}
+
 export async function codeCreate(params) {
   return r('/api/code/create', params);
 }

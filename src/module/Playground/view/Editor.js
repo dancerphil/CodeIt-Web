@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import AceEditor from 'react-ace';
 import { Tabs, Select } from 'antd';
-import 'brace/mode/javascript';
-import 'brace/mode/java';
 import 'brace/mode/python';
-import 'brace/snippets/javascript';
-import 'brace/snippets/java';
+import 'brace/mode/java';
+import 'brace/mode/javascript';
 import 'brace/snippets/python';
+import 'brace/snippets/java';
+import 'brace/snippets/javascript';
 import 'brace/theme/monokai';
 import 'brace/theme/github';
 import 'brace/ext/language_tools';
@@ -21,9 +21,9 @@ const { TabPane } = Tabs;
 const { Option } = Select;
 
 const languages = [
-  'javascript',
-  'java',
   'python',
+  'java',
+  'javascript',
 ];
 
 const themes = [
@@ -31,19 +31,14 @@ const themes = [
   'github',
 ];
 
-const defaultValue =
-  `function onLoad(editor) {
-  console.log("i've loaded");
-}`;
-
-@connect()
+@connect(state => ({
+  code: state.code,
+}))
 export default class Editor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: defaultValue,
       theme: 'monokai',
-      mode: 'javascript',
       fontSize: 14,
     };
     this.setTheme = this.setTheme.bind(this);
@@ -58,8 +53,9 @@ export default class Editor extends Component {
     if (onTextChange) {
       onTextChange(newValue);
     }
-    this.setState({
-      value: newValue,
+    this.props.dispatch({
+      type: 'code/set',
+      payload: { content: newValue },
     });
   }
   setTheme(value) {
@@ -68,8 +64,9 @@ export default class Editor extends Component {
     });
   }
   setMode(value) {
-    this.setState({
-      mode: value,
+    this.props.dispatch({
+      type: 'code/set',
+      payload: { type: value },
     });
   }
   setBoolean(name, value) {
@@ -85,7 +82,7 @@ export default class Editor extends Component {
   renderTabBarExtraContent() {
     return (
       <div>
-        <Select defaultValue="javascript" style={extraButton} onChange={this.setMode}>
+        <Select defaultValue="python" style={extraButton} onChange={this.setMode}>
           {languages.map(lang => <Option key={lang} value={lang}>{lang}</Option>)}
         </Select>
         <Select defaultValue="monokai" style={extraButton} onChange={this.setTheme}>
@@ -98,9 +95,11 @@ export default class Editor extends Component {
     );
   }
   render() {
-    let { text } = this.props;
-    if (text === undefined) {
-      text = this.state.value;
+    const { content } = this.props.code;
+    const { type } = this.props.code;
+    let etype = type;
+    if (type === 'python3') {
+      etype = 'python';
     }
     return (
       <div>
@@ -110,11 +109,11 @@ export default class Editor extends Component {
           tabBarExtraContent={this.renderTabBarExtraContent()}
         >
           <TabPane
-            tab={<div style={{ color: 'white' }} >{this.state.mode}</div>}
+            tab={<div style={{ color: 'white' }} >{type}</div>}
           >
             <AceEditor
               style={editorLayout}
-              mode={this.state.mode}
+              mode={etype}
               theme={this.state.theme}
               name="blah2"
               onLoad={this.onLoad}
@@ -122,7 +121,7 @@ export default class Editor extends Component {
               onSelectionChange={this.onSelectionChange}
               onCursorChange={this.onCursorChange}
               onValidate={this.onValidate}
-              value={text}
+              value={content}
               fontSize={this.state.fontSize}
               showPrintMargin
               showGutter
@@ -140,7 +139,7 @@ export default class Editor extends Component {
         <ButtonGroup handleSave={(title) => {
           this.props.dispatch({
             type: 'code/save',
-            payload: { public: true, title, type: this.state.mode, content: this.state.value, tags: [] },
+            payload: { public: true, title, type, content, tags: [] },
           });
         }}
         />

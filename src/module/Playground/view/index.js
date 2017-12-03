@@ -7,12 +7,12 @@ import Output from './Output';
 @connect()
 export default class Playground extends PureComponent {
   render() {
-    const { text, onTextChange } = this.props;
+    const { onTextChange } = this.props;
     return (
       <div style={{ height: 'calc(100vh - 64px)' }} >
         <Row gutter={24} style={{ height: '100%', margin: 0 }} >
           <Col xl={16} lg={24} md={24} sm={24} xs={24} style={{ height: '100%', padding: 0 }} >
-            <Editor text={text} onTextChange={onTextChange} />
+            <Editor onTextChange={onTextChange} />
           </Col>
           <Col xl={8} lg={24} md={24} sm={24} xs={24} style={{ height: '100%', padding: 0 }} >
             <Output />
