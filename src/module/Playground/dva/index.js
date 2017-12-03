@@ -22,7 +22,7 @@ export default {
           payload: { codeId: response.op.$id },
         });
       } catch (e) {
-        console.log(e);
+        console.log(e); // eslint-disable-line
       }
     },
     *run({ payload }, { call, put }) {

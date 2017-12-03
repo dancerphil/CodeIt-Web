@@ -16,7 +16,6 @@ export default class Output extends PureComponent {
   )
 
   render() {
-    console.log(this.props.code);
     const { data } = this.props.code;
     let output = '';
     if (data) {

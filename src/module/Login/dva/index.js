@@ -1,4 +1,4 @@
-import { login, profile } from '../../../services/api';
+import { login, profile, register } from '../../../services/api';
 
 export default {
   namespace: 'user',
@@ -9,19 +9,36 @@ export default {
   effects: {
     *login({ payload }, { call, put }) {
       try {
-        const loginResponse = yield call(login, payload);
-        console.log(loginResponse);
-        yield put({
-          type: 'router/set',
-          payload: 'home',
-        });
+        yield call(login, payload);
         const profileResponse = yield call(profile);
         yield put({
           type: 'loginSuccess',
           payload: profileResponse,
         });
+        yield put({
+          type: 'router/set',
+          payload: 'home',
+        });
       } catch (e) {
-        console.log(e);
+        console.log(e); // eslint-disable-line
+      }
+    },
+    *register({ payload }, { call, put }) {
+      try {
+        yield call(register, payload);
+        const { username, password } = payload;
+        yield call(login, { username, password });
+        const profileResponse = yield call(profile);
+        yield put({
+          type: 'loginSuccess',
+          payload: profileResponse,
+        });
+        yield put({
+          type: 'router/set',
+          payload: 'user/register-result',
+        });
+      } catch (e) {
+        console.log(e); // eslint-disable-line
       }
     },
   },

@@ -22,7 +22,6 @@ export default class Code extends PureComponent {
   }
   render() {
     const $array = this.props.code.$array || [];
-    console.log($array);
     return (
       <div style={{ margin: '20px' }}>
         <Row gutter={24}>

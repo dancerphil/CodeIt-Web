@@ -21,6 +21,10 @@ export async function profile() {
   return r('/api/user/profile');
 }
 
+export async function register(params) {
+  return r('/api/user/register', params);
+}
+
 export async function course() {
   return r('/api/class/find');
 }
