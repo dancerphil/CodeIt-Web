@@ -1,4 +1,4 @@
-import { course, lesson } from '../../../services/api';
+import { course, lesson, content } from '../../../services/api';
 
 export default {
   namespace: 'course',
@@ -21,6 +21,19 @@ export default {
         payload: response,
       });
     },
+    *content({ payload }, { call, put }) {
+      const { item } = payload;
+      console.log('get content of ', item);
+      const response = yield call(content, { _id: item._id.$id });
+      yield put({
+        type: 'contentSuccess',
+        payload: response,
+      });
+      yield put({
+        type: 'router/set',
+        payload: `course/${item.cid.name}/detail`,
+      });
+    },
   },
 
   reducers: {
@@ -29,6 +42,9 @@ export default {
     },
     lessonSuccess(state, action) {
       return Object.assign({}, state, { lesson: action.payload });
+    },
+    contentSuccess(state, action) {
+      return Object.assign({}, state, { content: action.payload });
     },
   },
 };

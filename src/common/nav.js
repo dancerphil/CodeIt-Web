@@ -5,6 +5,7 @@ import BlankLayout from '../layouts/BlankLayout';
 import HomePage from '../module/HomePage/view/index';
 import Course from '../module/Course/view/index';
 import Lesson from '../module/Course/lesson/index';
+import Content from '../module/Course/content/index';
 import Code from '../module/Playground/preview/index';
 import Playground from '../module/Playground/view/index';
 import Chat from '../module/Chat/view/index';
@@ -34,6 +35,10 @@ const data = [{
     name: 'lesson',
     path: 'course/:name',
     component: Lesson,
+  }, {
+    name: 'content',
+    path: 'course/:name/detail',
+    component: Content,
   }, {
     name: '代码',
     path: 'code',

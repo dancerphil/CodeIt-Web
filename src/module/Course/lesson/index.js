@@ -6,7 +6,7 @@ import LessonItem from './LessonItem';
 @connect(state => ({
   course: state.course,
 }))
-export default class Course extends PureComponent {
+export default class Lesson extends PureComponent {
   componentDidMount() {
     const { location } = this.props;
     const courseName = location.pathname.split('/')[2];

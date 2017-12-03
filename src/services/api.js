@@ -45,6 +45,10 @@ export async function lesson(id) {
   return r('/api/class/lesson/find', { cid: id });
 }
 
+export async function content(params) {
+  return r('/api/class/lesson/findOne', params);
+}
+
 export async function queryProjectNotice() {
   return r('/api/project/notice');
 }
