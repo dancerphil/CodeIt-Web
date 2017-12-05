@@ -1,4 +1,4 @@
-import { code, codeDetail, codeCreate, codeCheck } from '../../../services/api';
+import { code, codeDetail, codeCreate, codeCheck, vote } from '../../../services/api';
 
 export default {
   namespace: 'code',
@@ -50,6 +50,16 @@ export default {
         type: 'getSuccess',
         payload: { data: response.data },
       });
+    },
+    *vote({ payload }, { call, put }) {
+      try {
+        yield call(vote, payload);
+        yield put({
+          type: 'get',
+        });
+      } catch (e) {
+        console.log(e); // eslint-disable-line
+      }
     },
   },
 

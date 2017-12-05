@@ -57,6 +57,10 @@ export async function codeCheck(params) {
   return r('/api/code/check', params);
 }
 
+export async function vote(params) {
+  return r('/api/code/vote', params);
+}
+
 export async function bulletin(params) {
   return r('/api/bulletin/find', params);
 }
