@@ -37,6 +37,11 @@ export async function codeCheck(params) {
   return r('/api/code/check', params);
 }
 
+export async function vote(params) {
+  console.log('in vote');
+  return r('/api/code/vote', params);
+}
+
 export async function lesson(id) {
   return r('/api/class/lesson/find', { cid: id });
 }

@@ -1,4 +1,4 @@
-import { code, codeCreate, codeCheck } from '../../../services/api';
+import { code, codeCreate, codeCheck, vote } from '../../../services/api';
 
 export default {
   namespace: 'code',
@@ -22,7 +22,7 @@ export default {
           payload: { codeId: response.op.$id },
         });
       } catch (e) {
-        console.log(e);
+        console.log(e); // eslint-disable-line
       }
     },
     *run({ payload }, { call, put }) {
@@ -31,6 +31,16 @@ export default {
         type: 'getSuccess',
         payload: { data: response.data },
       });
+    },
+    *vote({ payload }, { call, put }) {
+      try {
+        yield call(vote, payload);
+        yield put({
+          type: 'get',
+        });
+      } catch (e) {
+        console.log(e); // eslint-disable-line
+      }
     },
   },
 
