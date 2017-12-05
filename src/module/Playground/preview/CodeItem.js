@@ -9,14 +9,14 @@ export default class CodeItem extends PureComponent {
     const { item } = this.props;
     this.props.dispatch({
       type: 'code/vote',
-      payload: { _id: item._id.$id, vote: 1 },
+      payload: { _id: item._id.$id, vote: 'up' },
     });
   }
   handleVoteDown = () => {
     const { item } = this.props;
     this.props.dispatch({
       type: 'code/vote',
-      payload: { _id: item._id.$id, vote: -1 },
+      payload: { _id: item._id.$id, vote: 'down' },
     });
   }
   render() {
