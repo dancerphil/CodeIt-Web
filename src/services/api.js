@@ -65,6 +65,10 @@ export async function bulletin(params) {
   return r('/api/bulletin/find', params);
 }
 
+export async function bulletinCreate(params) {
+  return r('/api/bulletin/create', params);
+}
+
 export async function queryProjectNotice() {
   return r('/api/project/notice');
 }

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import { List, Avatar } from 'antd';
-import Vote from './Vote';
+import Vote from '../../../components/Vote/index';
 
 @connect()
 export default class CodeItem extends PureComponent {

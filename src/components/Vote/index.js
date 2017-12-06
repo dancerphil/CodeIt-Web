@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Icon } from 'antd';
-import styles from './vote.less';
+import styles from './index.less';
 
 export default class Vote extends PureComponent {
   render() {

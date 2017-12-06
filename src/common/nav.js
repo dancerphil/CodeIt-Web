@@ -7,6 +7,7 @@ import Course from '../module/Course/view/index';
 import Lesson from '../module/Course/lesson/index';
 import Content from '../module/Course/content/index';
 import Code from '../module/Playground/preview/index';
+import Bulletin from '../module/Bulletin/view/index';
 import Playground from '../module/Playground/view/index';
 import Chat from '../module/Chat/view/index';
 
@@ -54,6 +55,12 @@ const data = [{
     path: 'chat',
     icon: 'sync',
     component: Chat,
+    show: true,
+  }, {
+    name: '论坛',
+    path: 'bulletin',
+    icon: 'solution',
+    component: Bulletin,
     show: true,
   }],
 }, {

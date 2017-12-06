@@ -3,6 +3,7 @@ import 'moment/locale/zh-cn';
 import login from './module/Login/dva';
 import home from './module/HomePage/dva';
 import course from './module/Course/dva';
+import bulletin from './module/Bulletin/dva';
 import code from './module/Playground/dva';
 import models from './models/index';
 import './polyfill';
@@ -25,6 +26,7 @@ models.forEach((m) => {
 app.model(login);
 app.model(home);
 app.model(course);
+app.model(bulletin);
 app.model(code);
 
 // 4. Router

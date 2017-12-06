@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
-import { Row, Col, Card, List, Button } from 'antd';
+import { Card, List, Button } from 'antd';
 import styles from './index.less';
 import CodeItem from './CodeItem';
 
@@ -24,36 +23,31 @@ export default class Code extends PureComponent {
     const $array = this.props.code.$array || [];
     return (
       <div style={{ margin: '20px' }}>
-        <Row gutter={24}>
-          <Col xl={24} lg={24} md={24} sm={24} xs={24}>
-            <Card
-              className={styles.projectList}
-              style={{ marginBottom: 24 }}
-              title="进行中的项目"
-              bordered={false}
-              extra={<Link to="/">全部项目</Link>}
-              loading={false}
-              bodyStyle={{ padding: '32px 32px 40px 32px' }}
+        <Card
+          className={styles.projectList}
+          style={{ marginBottom: 24 }}
+          title="代码列表"
+          bordered={false}
+          loading={false}
+          bodyStyle={{ padding: '32px 32px 40px 32px' }}
+        >
+          <div>
+            <Button
+              type="primary"
+              onClick={this.handleClick}
             >
-              <div>
-                <Button
-                  type="primary"
-                  onClick={this.handleClick}
-                >
-                  {'New Code'}
-                </Button>
-              </div>
-              <List
-                size="large"
-                rowKey="id"
-                dataSource={$array}
-                renderItem={item => (
-                  <CodeItem item={item} />
+              {'新建代码'}
+            </Button>
+          </div>
+          <List
+            size="large"
+            rowKey="id"
+            dataSource={$array}
+            renderItem={item => (
+              <CodeItem item={item} />
                 )}
-              />
-            </Card>
-          </Col>
-        </Row>
+          />
+        </Card>
       </div>
     );
   }
