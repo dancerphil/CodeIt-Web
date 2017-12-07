@@ -9,6 +9,7 @@ import Content from '../module/Course/content/index';
 import Code from '../module/Playground/preview/index';
 import Bulletin from '../module/Bulletin/view/index';
 import Playground from '../module/Playground/view/index';
+import ChatRoom from '../module/Chat/preview/index';
 import Chat from '../module/Chat/view/index';
 
 import Login from '../module/Login/view/index';
@@ -33,11 +34,11 @@ const data = [{
     component: Course,
     show: true,
   }, {
-    name: 'lesson',
+    name: '课程',
     path: 'course/:name',
     component: Lesson,
   }, {
-    name: 'content',
+    name: '课程详情',
     path: 'course/:name/detail',
     component: Content,
   }, {
@@ -47,15 +48,19 @@ const data = [{
     component: Code,
     show: true,
   }, {
-    name: 'playground',
+    name: '代码',
     path: 'code/playground',
     component: Playground,
   }, {
     name: '一对一',
     path: 'chat',
     icon: 'sync',
-    component: Chat,
+    component: ChatRoom,
     show: true,
+  }, {
+    name: '一对一',
+    path: 'chat/playground',
+    component: Chat,
   }, {
     name: '论坛',
     path: 'bulletin',

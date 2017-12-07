@@ -69,6 +69,11 @@ export async function bulletinCreate(params) {
   return r('/api/bulletin/create', params);
 }
 
+export async function room(params) {
+  return r('/api/room/list', params);
+}
+
+
 export async function queryProjectNotice() {
   return r('/api/project/notice');
 }
