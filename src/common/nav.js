@@ -8,6 +8,7 @@ import Lesson from '../module/Course/lesson/index';
 import Content from '../module/Course/content/index';
 import Code from '../module/Playground/preview/index';
 import Bulletin from '../module/Bulletin/view/index';
+import BulletinContent from '../module/Bulletin/content/index';
 import Playground from '../module/Playground/view/index';
 import ChatRoom from '../module/Chat/preview/index';
 import Chat from '../module/Chat/view/index';
@@ -67,6 +68,10 @@ const data = [{
     icon: 'solution',
     component: Bulletin,
     show: true,
+  }, {
+    name: '论坛',
+    path: 'bulletin/detail',
+    component: BulletinContent,
   }],
 }, {
   component: UserLayout,

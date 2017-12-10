@@ -6,11 +6,11 @@ import Vote from '../../../components/Vote/index';
 @connect()
 export default class BulletinItem extends PureComponent {
   handleClick = () => {
-    // const { item } = this.props;
-    // this.props.dispatch({
-    //   type: 'code/detail',
-    //   payload: { _id: item._id.$id },
-    // });
+    const { item } = this.props;
+    this.props.dispatch({
+      type: 'bulletin/detail',
+      payload: { _id: item._id.$id },
+    });
   }
   handleVoteUp = (e) => {
     e.preventDefault();

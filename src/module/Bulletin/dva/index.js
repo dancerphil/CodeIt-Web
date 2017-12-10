@@ -1,4 +1,4 @@
-import { bulletin, bulletinCreate } from '../../../services/api';
+import { bulletin, bulletinCreate, bulletinDetail } from '../../../services/api';
 
 export default {
   namespace: 'bulletin',
@@ -23,6 +23,17 @@ export default {
       } catch (e) {
         console.log(e); // eslint-disable-line
       }
+    },
+    *detail({ payload }, { call, put }) {
+      const response = yield call(bulletinDetail, payload);
+      yield put({
+        type: 'getSuccess',
+        payload: { content: response },
+      });
+      yield put({
+        type: 'router/set',
+        payload: 'bulletin/detail',
+      });
     },
   },
 
