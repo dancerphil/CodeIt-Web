@@ -47,6 +47,7 @@ export default {
       }
     },
     *value({ payload }, { put }) {
+      console.log('in value');
       yield put({
         type: 'socketValue',
         payload: payload.value,
@@ -68,6 +69,7 @@ export default {
       }
     },
     socketValue(state, action) {
+      console.log('in socketValue', action.payload);
       const value = dealWith(action.payload);
       const { socket } = state;
       if (socket) {
