@@ -89,7 +89,9 @@ export default {
 
   reducers: {
     getSuccess(state, action) {
-      return Object.assign({}, state, action.payload);
+      let { content } = action.payload;
+      content = dealWith(content);
+      return Object.assign({}, state, { content });
     },
     dispatchSuccess(state, action) {
       console.log('dispatch', state, action.payload);
