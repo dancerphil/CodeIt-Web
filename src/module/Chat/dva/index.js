@@ -26,9 +26,29 @@ export default {
   effects: {
     *get(_, { call, put }) {
       const response = yield call(room);
+
+      const socket = io();
+      console.log('create socket', socket);
+      socket.on('join.done', (aroom) => {
+        console.log('join done', aroom);
+        if (aroom.content) {
+          put({
+            type: 'code/set',
+            payload: { content: dealWith(aroom.content) },
+          });
+        }
+      });
+      socket.on('code', (msg) => {
+        console.log('code', msg);
+        put({
+          type: 'code/dispatch',
+          payload: { msg },
+        });
+      });
+
       yield put({
         type: 'init',
-        payload: response,
+        payload: Object.assign(response, { socket }),
       });
     },
     *create({ payload }, { put }) {
@@ -55,25 +75,7 @@ export default {
 
   reducers: {
     init(state, action) {
-      const socket = io();
-      console.log('create socket', socket);
-      socket.on('join.done', (aroom) => {
-        console.log('join done', aroom);
-        if (aroom.content) {
-          this.props.dispatch({
-            type: 'code/set',
-            payload: { content: dealWith(aroom.content) },
-          });
-        }
-      });
-      socket.on('code', (msg) => {
-        console.log('code', msg);
-        this.props.dispatch({
-          type: 'code/dispatch',
-          payload: { msg },
-        });
-      });
-      return Object.assign({}, state, action.payload, { socket });
+      return Object.assign({}, state, action.payload);
     },
     socketJoin(state, action) {
       const { socket } = state;
