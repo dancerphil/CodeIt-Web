@@ -57,6 +57,15 @@ export default {
     init(state, action) {
       const socket = io();
       console.log('create socket', socket);
+      socket.on('join.done', (aroom) => {
+        console.log('join done', aroom);
+        if (aroom.content) {
+          this.props.dispatch({
+            type: 'code/set',
+            payload: { content: dealWith(aroom.content) },
+          });
+        }
+      });
       socket.on('code', (msg) => {
         console.log(`applyPatch(state.text, msg): ${applyPatch(this.props.code.content, msg)}`);
         const text = applyPatch(this.props.code.content, msg);
