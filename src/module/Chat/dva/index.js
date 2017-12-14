@@ -1,4 +1,3 @@
-import io from 'socket.io-client';
 import { createPatch } from 'diff';
 import { room } from '../../../services/api';
 
@@ -24,27 +23,9 @@ export default {
   },
 
   effects: {
-    *get(_, { call, put }) {
+    *get({ payload }, { call, put }) {
       const response = yield call(room);
-
-      const socket = io();
-      console.log('create socket', socket);
-      socket.on('join.done', (aroom) => {
-        console.log('join done', aroom);
-        if (aroom.content) {
-          put({
-            type: 'code/set',
-            payload: { content: dealWith(aroom.content) },
-          });
-        }
-      });
-      socket.on('code', (msg) => {
-        console.log('code', msg);
-        put({
-          type: 'code/dispatch',
-          payload: { msg },
-        });
-      });
+      const { socket } = payload;
 
       yield put({
         type: 'init',

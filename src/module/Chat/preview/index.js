@@ -1,7 +1,23 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
+import io from 'socket.io-client';
 import { Card, List, Button, Modal, Input } from 'antd';
 import RoomItem from './RoomItem';
+
+const dealWith = (str) => {
+  console.log(`dealing with: ${str}`);
+  const l = str.length;
+  if (l === 0) {
+    console.log('returns: \\r\\n');
+    return '\r\n';
+  }
+  if (str.slice(l - 1, l) !== '\n') {
+    console.log('returns: raw + \\r\\n');
+    return `${str}\r\n`;
+  }
+  console.log('returns: raw');
+  return str;
+};
 
 @connect(state => ({
   chat: state.chat,
@@ -13,8 +29,27 @@ export default class Course extends PureComponent {
   }
 
   componentDidMount() {
+    const socket = io();
+    console.log('create socket', socket);
+    socket.on('join.done', (aroom) => {
+      console.log('join done', aroom);
+      if (aroom.content) {
+        this.props.dispatch({
+          type: 'code/set',
+          payload: { content: dealWith(aroom.content) },
+        });
+      }
+    });
+    socket.on('code', (msg) => {
+      console.log('code', msg);
+      this.props.dispatch({
+        type: 'code/dispatch',
+        payload: { msg },
+      });
+    });
     this.props.dispatch({
       type: 'chat/get',
+      payload: { socket },
     });
   }
 
