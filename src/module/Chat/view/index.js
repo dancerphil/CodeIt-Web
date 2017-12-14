@@ -6,7 +6,7 @@ import Playground from '../../Playground/view/index';
 export default class Chat extends PureComponent {
   handleTextChange = (value) => {
     this.props.dispatch({
-      type: 'chat/valueChange',
+      type: 'chat/value',
       payload: { value },
     });
   }
