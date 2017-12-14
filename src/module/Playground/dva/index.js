@@ -20,7 +20,7 @@ export default {
   namespace: 'code',
 
   state: {
-    content: 'print(\'init\')\r\n',
+    content: '\n',
     type: 'python',
   },
 
@@ -33,12 +33,14 @@ export default {
       });
     },
     *set({ payload }, { put }) {
+      console.log('in code set');
       yield put({
         type: 'getSuccess',
         payload,
       });
     },
     *dispatch({ payload }, { put }) {
+      console.log('in code dispatch');
       yield put({
         type: 'dispatchSuccess',
         payload,
