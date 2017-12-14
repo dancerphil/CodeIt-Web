@@ -50,7 +50,7 @@ export default {
       console.log('in value');
       yield put({
         type: 'socketValue',
-        payload: payload.value,
+        payload,
       });
     },
   },
@@ -70,11 +70,12 @@ export default {
     },
     socketValue(state, action) {
       console.log('in socketValue', action.payload);
-      const value = dealWith(action.payload);
+      const { value, content } = action.payload;
+      const dvalue = dealWith(value);
       const { socket } = state;
       if (socket) {
-        console.log(`createPatch('left', text, newValue)): ${createPatch('left', this.props.code.content, value)}`);
-        socket.emit('code', createPatch('code', this.props.code.content, value));
+        console.log(`createPatch('code', text, newValue)): ${createPatch('code', content, dvalue)}`);
+        socket.emit('code', createPatch('code', content, dvalue));
       } else {
         console.log('no socket');
       }
