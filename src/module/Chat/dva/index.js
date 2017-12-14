@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { applyPatch, createPatch } from 'diff';
+import { createPatch } from 'diff';
 import { room } from '../../../services/api';
 
 const dealWith = (str) => {
@@ -67,14 +67,11 @@ export default {
         }
       });
       socket.on('code', (msg) => {
-        console.log(`applyPatch(state.text, msg): ${applyPatch(this.props.code.content, msg)}`);
-        const text = applyPatch(this.props.code.content, msg);
-        if (text) {
-          this.props.dispatch({
-            type: 'code/set',
-            payload: { content: dealWith(text) },
-          });
-        }
+        console.log('code', msg);
+        this.props.dispatch({
+          type: 'code/dispatch',
+          payload: { msg },
+        });
       });
       return Object.assign({}, state, action.payload, { socket });
     },
