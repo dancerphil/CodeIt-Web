@@ -1,20 +1,6 @@
 import { createPatch } from 'diff';
 import { room } from '../../../services/api';
-
-const dealWith = (str) => {
-  console.log(`dealing with: ${str}`);
-  const l = str.length;
-  if (l === 0) {
-    console.log('returns: \\r\\n');
-    return '\r\n';
-  }
-  if (str.slice(l - 1, l) !== '\n') {
-    console.log('returns: raw + \\r\\n');
-    return `${str}\r\n`;
-  }
-  console.log('returns: raw');
-  return str;
-};
+import dealWith from '../../../utils/dealWith';
 
 export default {
   namespace: 'chat',

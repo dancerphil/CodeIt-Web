@@ -1,20 +1,6 @@
 import { applyPatch } from 'diff';
 import { code, codeDetail, codeCreate, codeCheck, vote } from '../../../services/api';
-
-const dealWith = (str) => {
-  console.log(`dealing with: ${str}`);
-  const l = str.length;
-  if (l === 0) {
-    console.log('returns: \\r\\n');
-    return '\r\n';
-  }
-  if (str.slice(l - 1, l) !== '\n') {
-    console.log('returns: raw + \\r\\n');
-    return `${str}\r\n`;
-  }
-  console.log('returns: raw');
-  return str;
-};
+import dealWith from '../../../utils/dealWith';
 
 export default {
   namespace: 'code',
@@ -27,6 +13,7 @@ export default {
   effects: {
     *get(_, { call, put }) {
       const response = yield call(code);
+      console.log(response);
       yield put({
         type: 'getSuccess',
         payload: response,
@@ -35,7 +22,7 @@ export default {
     *set({ payload }, { put }) {
       console.log('in code set');
       yield put({
-        type: 'getSuccess',
+        type: 'setContent',
         payload,
       });
     },
@@ -89,6 +76,9 @@ export default {
 
   reducers: {
     getSuccess(state, action) {
+      return Object.assign({}, state, action.payload);
+    },
+    setContent(state, action) {
       let { content } = action.payload;
       content = dealWith(content);
       return Object.assign({}, state, { content });

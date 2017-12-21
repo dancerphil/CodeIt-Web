@@ -21,6 +21,7 @@ export default class Code extends PureComponent {
   }
   render() {
     const $array = this.props.code.$array || [];
+    console.log(this.props.code);
     return (
       <div style={{ margin: '20px' }}>
         <Card
