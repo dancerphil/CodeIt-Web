@@ -16,7 +16,7 @@ export default class BulletinItem extends PureComponent {
     e.preventDefault();
     const { item } = this.props;
     this.props.dispatch({
-      type: 'code/vote',
+      type: 'bulletin/vote',
       payload: { _id: item._id.$id, vote: 'up' },
     });
   }
