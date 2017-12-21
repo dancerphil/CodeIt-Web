@@ -20,6 +20,11 @@ class LayoutHeader extends PureComponent {
       openKeys: this.getDefaultCollapsedSubMenus(props),
     };
   }
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'user/autoLogin',
+    });
+  }
   onMenuClick = () => {
     this.props.dispatch({
       type: 'router/set',

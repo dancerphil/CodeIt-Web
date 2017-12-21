@@ -10,6 +10,24 @@ export default {
     *login({ payload }, { call, put }) {
       try {
         yield call(login, payload);
+        localStorage.codeit_user = JSON.stringify(payload);
+        const profileResponse = yield call(profile);
+        yield put({
+          type: 'loginSuccess',
+          payload: profileResponse,
+        });
+        yield put({
+          type: 'router/set',
+          payload: 'home',
+        });
+      } catch (e) {
+        console.log(e); // eslint-disable-line
+      }
+    },
+    *autoLogin(_, { call, put }) {
+      try {
+        const payload = JSON.parse(localStorage.codeit_user);
+        yield call(login, payload);
         const profileResponse = yield call(profile);
         yield put({
           type: 'loginSuccess',
